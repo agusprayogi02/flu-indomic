@@ -7,3 +7,8 @@ const Color blackC = Color(0xFF000000);
 const Color primaryC = Color(0xFF3D5AFE);
 const Color lightPrimaryC = Color(0xFF8187FF);
 const Color darkPrimaryC = Color(0xFF0031CA);
+
+const double defaultPadding = 8;
+const double defaultMargin = 8;
+
+const defaultRadius = Radius.circular(8);
