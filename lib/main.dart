@@ -7,7 +7,9 @@ import 'ui/pages/splash_page/splash_page.dart';
 import 'ui/theme/app_themes.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {

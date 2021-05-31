@@ -19,7 +19,7 @@ class CircleButton extends StatelessWidget {
       width: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.grey[400],
+        color: greyC,
       ),
       margin: EdgeInsets.only(
         right: defaultMargin * 1.4,
@@ -28,7 +28,10 @@ class CircleButton extends StatelessWidget {
       ),
       child: IconButton(
         onPressed: onPress,
-        icon: Icon(icon),
+        icon: Icon(
+          icon,
+          color: greyDarkC,
+        ),
       ),
     );
   }
