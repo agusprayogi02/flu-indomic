@@ -5,7 +5,7 @@ import '../../../controllers/home_controller.dart';
 import 'components/app_bar.dart';
 import 'components/body.dart';
 
-class HomePage extends GetView<HomeController> {
+class HomePage extends GetResponsiveView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
