@@ -9,16 +9,18 @@ class RecommendedCard extends StatelessWidget {
     Key? key,
     required this.title,
     required this.imgSrc,
+    required this.onTap,
   }) : super(key: key);
 
   final String title;
   final String imgSrc;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: getHeight(120),
-      width: getWidth(145),
+      width: getWidth(150),
       decoration: BoxDecoration(
         borderRadius: borderRadiusAll(),
         color: lightPrimaryC,
@@ -31,7 +33,7 @@ class RecommendedCard extends StatelessWidget {
               placeholder: "assets/gif/spinner.gif",
               image: "$imgSrc",
               fit: BoxFit.cover,
-            ).h(getHeight(95)).w(getWidth(145)),
+            ).h(getHeight(95)).w(getWidth(150)),
           ),
           "$title"
               .text
@@ -42,6 +44,6 @@ class RecommendedCard extends StatelessWidget {
               .marginOnly(top: 3, left: 5, right: 5),
         ],
       ),
-    );
+    ).onInkTap(onTap);
   }
 }
