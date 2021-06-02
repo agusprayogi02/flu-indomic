@@ -6,7 +6,7 @@ class RecommendedRepository {
 
   RecommendedRepository({required this.api});
 
-  Future<MangaList> getAll() async {
+  Future<List<MangaList>> getAll() async {
     return await api.getRecommended();
   }
 }

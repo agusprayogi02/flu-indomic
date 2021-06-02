@@ -4,22 +4,24 @@
 
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
+
 RecommendedModel recommendedModelFromJson(String str) =>
     RecommendedModel.fromJson(json.decode(str));
 
 String recommendedModelToJson(RecommendedModel data) =>
     json.encode(data.toJson());
 
-class RecommendedModel {
+class RecommendedModel extends Equatable {
   RecommendedModel({
     this.status = false,
     this.message = "",
     this.mangaList,
   });
 
-  bool status;
-  String message;
-  List<MangaList>? mangaList;
+  final bool status;
+  final String message;
+  final List<MangaList>? mangaList;
 
   factory RecommendedModel.fromJson(Map<String, dynamic> json) =>
       RecommendedModel(
@@ -34,18 +36,21 @@ class RecommendedModel {
         "message": message,
         "manga_list": List<MangaList>.from(mangaList!.map((x) => x.toJson())),
       };
+
+  @override
+  List<Object?> get props => [status, message, mangaList];
 }
 
-class MangaList {
+class MangaList extends Equatable {
   MangaList({
     this.title = "",
     this.thumb = "",
     this.endpoint = "",
   });
 
-  String title;
-  String thumb;
-  String endpoint;
+  final String title;
+  final String thumb;
+  final String endpoint;
 
   factory MangaList.fromJson(Map<String, dynamic> json) => MangaList(
         title: json["title"],
@@ -58,4 +63,7 @@ class MangaList {
         "thumb": thumb,
         "endpoint": endpoint,
       };
+
+  @override
+  List<Object?> get props => [title, thumb, endpoint];
 }
