@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:indomic/controllers/home_controller.dart';
 import 'package:indomic/ui/components/circle_button.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -8,11 +9,13 @@ AppBar buildAppBar() {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0.0,
+    toolbarHeight: 45,
     title: TextFormField(
       decoration: InputDecoration(
         prefixIcon: Icon(
           Icons.search,
           color: greyDarkC,
+          size: 20,
         ),
         hintText: "Search Comic..",
         hintStyle: TextStyle(
@@ -29,15 +32,20 @@ AppBar buildAppBar() {
           borderRadius: BorderRadius.all(defaultRadius()),
         ),
       ),
-    ).h(40).marginOnly(top: defaultMargin * 1.2),
+    ).h(32).marginOnly(top: defaultMargin * 1.2),
     actions: [
       CircleButton(
-        onPress: () {},
-        icon: Icons.history,
+        icon: Icons.replay_sharp,
+        tooltip: "Reload",
+        onPress: () {
+          HomeController.to.getRecommeded();
+          HomeController.to.getLasestUpdated();
+        },
       ),
       CircleButton(
         onPress: () {},
-        icon: Icons.notifications,
+        tooltip: "Book Mark",
+        icon: Icons.bookmark,
       ),
     ],
   );

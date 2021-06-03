@@ -7,8 +7,10 @@ import 'package:indomic/data/services/repository/thumbnail_repository.dart';
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
 
-  final isLoading = false.obs;
-  final isError = false.obs;
+  final isThumbLoading = false.obs;
+  final isRecommendLoading = false.obs;
+  final isThumbError = false.obs;
+  final isRecommendError = false.obs;
   final Rx<List<MangaList>> recommended = Rx<List<MangaList>>([MangaList()]);
   final Rx<List<ThumbMangaList>> thumbnail =
       Rx<List<ThumbMangaList>>([ThumbMangaList()]);
@@ -18,23 +20,30 @@ class HomeController extends GetxController {
   final ThumbnailRepository thumbnailRepo;
 
   getRecommeded() async {
+    isRecommendLoading(true);
     try {
       var list = await recommendedRepo.getAll();
       recommended(list);
+      isRecommendLoading(false);
       return list;
     } catch (e) {
-      isError(true);
+      isRecommendLoading(false);
+      isRecommendError(true);
       return null;
     }
   }
 
   getLasestUpdated() async {
+    isThumbLoading(true);
     try {
       var data = await thumbnailRepo.getAll();
       thumbnail(data);
+      isThumbLoading(false);
       return data;
     } catch (e) {
-      isError(true);
+      isThumbLoading(false);
+      isThumbError(true);
+      return null;
     }
   }
 
@@ -42,9 +51,7 @@ class HomeController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    isLoading.toggle();
     getRecommeded();
     getLasestUpdated();
-    isLoading.toggle();
   }
 }

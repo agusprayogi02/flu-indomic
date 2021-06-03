@@ -6,7 +6,7 @@ final ThemeData appThemeData = ThemeData(
   accentColor: darkPrimaryC,
   fontFamily: 'Righteous',
   textTheme: TextTheme(
-    subtitle1: TextStyle(fontSize: 13.0, fontWeight: FontWeight.w400),
+    subtitle1: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w400),
     subtitle2: TextStyle(fontSize: 11.0, fontWeight: FontWeight.w400),
     headline1: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
     headline2: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),

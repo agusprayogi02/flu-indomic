@@ -27,10 +27,9 @@ Column buildListRecommended(BuildContext context) {
           () {
             // mengambil Get.find()
             var to = HomeController.to;
-            if (to.isLoading()) {
+            if (to.isThumbLoading.isTrue) {
               return Image.asset("assets/gif/ripple.gif");
-            }
-            if (to.isError.isFalse) {
+            } else if (to.isRecommendError.isFalse) {
               // get data all
               var data = to.recommended();
               return ListView.builder(

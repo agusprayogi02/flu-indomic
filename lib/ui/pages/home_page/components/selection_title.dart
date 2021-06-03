@@ -18,7 +18,7 @@ class SelectionTitle extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        "$title".text.headline4(context).make(),
+        "$title".text.headline5(context).make(),
         TextButton(
           onPressed: onPress,
           child: "View All".text.color(lightPrimaryC).make(),

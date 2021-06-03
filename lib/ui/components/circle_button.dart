@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:indomic/ui/utils/utils.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class CircleButton extends StatelessWidget {
   const CircleButton({
     Key? key,
     required this.icon,
     required this.onPress,
+    this.tooltip = "",
   }) : super(key: key);
 
   final IconData icon;
   final Function() onPress;
+  final String tooltip;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 40,
-      width: 40,
+      height: 35,
+      width: 35,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: borderRadiusAll(),
         color: greyC,
       ),
       margin: EdgeInsets.only(
@@ -26,13 +29,11 @@ class CircleButton extends StatelessWidget {
         top: defaultMargin * 1.5,
         bottom: defaultMargin * 0.5,
       ),
-      child: IconButton(
-        onPressed: onPress,
-        icon: Icon(
-          icon,
-          color: greyDarkC,
-        ),
+      child: Icon(
+        icon,
+        color: greyDarkC,
+        size: 20,
       ),
-    );
+    ).onInkTap(onPress).tooltip("$tooltip");
   }
 }
