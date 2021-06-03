@@ -10,7 +10,7 @@ GNav buildBottomNavigation() {
     hoverColor: greyC, // tab button hover color
     haptic: true, // haptic feedback
     curve: Curves.easeOutExpo, // tab animation curves
-    duration: Duration(milliseconds: 900), // tab animation duration
+    duration: Duration(milliseconds: 500), // tab animation duration
     gap: 8, // the tab button gap between icon and text
     color: Colors.grey[800], // unselected icon color
     activeColor: primaryC, // selected icon and text color
@@ -32,16 +32,16 @@ GNav buildBottomNavigation() {
     ), // navigation bar padding
     tabs: [
       GButton(
-        icon: Icons.home,
+        icon: Icons.home_rounded,
         text: 'Home',
       ),
       GButton(
-        icon: Icons.list,
+        icon: Icons.list_rounded,
         text: 'List',
       ),
       GButton(
-        icon: Icons.search,
-        text: 'Search',
+        icon: Icons.bookmark_rounded,
+        text: 'Bookmark',
       ),
     ],
   );

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:indomic/ui/utils/config_size.dart';
 import 'package:indomic/ui/utils/utils.dart';
@@ -34,10 +35,11 @@ class ThumbnailCard extends StatelessWidget {
           SizedBox(
             height: getHeight(100),
             width: getWidth(75),
-            child: FadeInImage.assetNetwork(
+            child: CachedNetworkImage(
               fit: BoxFit.cover,
-              placeholder: "assets/gif/ripple.gif",
-              image: "$imgSrc",
+              placeholder: (context, url) =>
+                  Image.asset("assets/gif/ripple.gif"),
+              imageUrl: "$imgSrc",
             ).cornerRadius(10),
           ),
           Column(

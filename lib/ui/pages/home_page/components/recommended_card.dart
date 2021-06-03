@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:indomic/ui/utils/config_size.dart';
 import 'package:indomic/ui/utils/utils.dart';
@@ -28,13 +29,13 @@ class RecommendedCard extends StatelessWidget {
       child: Column(
         children: [
           ClipRRect(
-            borderRadius: borderRadiusOnly(tLeft: 8, tRight: 8),
-            child: FadeInImage.assetNetwork(
-              placeholder: "assets/gif/spinner.gif",
-              image: "$imgSrc",
-              fit: BoxFit.cover,
-            ).h(getHeight(95)).w(getWidth(150)),
-          ),
+              borderRadius: borderRadiusOnly(tLeft: 8, tRight: 8),
+              child: CachedNetworkImage(
+                fit: BoxFit.cover,
+                imageUrl: "$imgSrc",
+                placeholder: (context, url) =>
+                    Image.asset("assets/gif/spinner.gif"),
+              ).h(getHeight(95)).w(getWidth(150))),
           "$title"
               .text
               .maxLines(1)
