@@ -32,7 +32,7 @@ Column buildListRecommended(BuildContext context) {
             }
             if (to.isError.isFalse) {
               // get data all
-              var data = to.data();
+              var data = to.recommended();
               return ListView.builder(
                 shrinkWrap: true,
                 itemCount: data.length,

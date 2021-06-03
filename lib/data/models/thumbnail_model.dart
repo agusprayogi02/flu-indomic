@@ -20,13 +20,13 @@ class ThumbnailModel extends Equatable {
 
   final bool status;
   final String message;
-  final List<MangaList>? mangaList;
+  final List<ThumbMangaList>? mangaList;
 
   factory ThumbnailModel.fromJson(Map<String, dynamic> json) => ThumbnailModel(
         status: json["status"],
         message: json["message"],
-        mangaList: List<MangaList>.from(
-            json["manga_list"].map((x) => MangaList.fromJson(x))),
+        mangaList: List<ThumbMangaList>.from(
+            json["manga_list"].map((x) => ThumbMangaList.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -40,8 +40,9 @@ class ThumbnailModel extends Equatable {
   List<Object?> get props => [status, message, mangaList];
 }
 
-class MangaList extends Equatable {
-  MangaList({
+// alias nama untuk manga list
+class ThumbMangaList extends Equatable {
+  ThumbMangaList({
     this.title = "",
     this.thumb = "",
     this.type = Type.MANGA,
@@ -57,7 +58,7 @@ class MangaList extends Equatable {
   final String endpoint;
   final String chapter;
 
-  factory MangaList.fromJson(Map<String, dynamic> json) => MangaList(
+  factory ThumbMangaList.fromJson(Map<String, dynamic> json) => ThumbMangaList(
         title: json["title"],
         thumb: json["thumb"],
         type: typeValues.map[json["type"]] ?? Type.MANGA,

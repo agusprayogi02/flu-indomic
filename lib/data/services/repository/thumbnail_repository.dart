@@ -6,7 +6,7 @@ class ThumbnailRepository {
 
   ThumbnailRepository({required this.api});
 
-  Future<List<MangaList>> getAll() async {
+  Future<List<ThumbMangaList>> getAll() async {
     return await api.getLatestUpdate();
   }
 }
