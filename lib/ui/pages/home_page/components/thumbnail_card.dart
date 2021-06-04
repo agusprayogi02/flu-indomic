@@ -19,7 +19,7 @@ class ThumbnailCard extends StatelessWidget {
   final String title;
   final String chapter;
   final String lastUpdated;
-  final String imgSrc;
+  final String? imgSrc;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,8 @@ class ThumbnailCard extends StatelessWidget {
               fit: BoxFit.cover,
               placeholder: (context, url) =>
                   Image.asset("assets/gif/ripple.gif"),
-              imageUrl: "$imgSrc",
+              imageUrl: imgSrc ??
+                  "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png",
             ).cornerRadius(10),
           ),
           Column(

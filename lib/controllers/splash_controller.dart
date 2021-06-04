@@ -10,7 +10,7 @@ class SplashController extends GetxController {
     // Menunggu 3 s untuk pindah halaman
     Future.delayed(
       Duration(seconds: 3),
-      () => Get.offAndToNamed(Routes.HOME),
+      () => Get.offAndToNamed(Routes.MASTER),
     );
   }
 }

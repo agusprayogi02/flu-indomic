@@ -14,7 +14,7 @@ class RecommendedCard extends StatelessWidget {
   }) : super(key: key);
 
   final String title;
-  final String imgSrc;
+  final String? imgSrc;
   final Function() onTap;
 
   @override
@@ -32,7 +32,8 @@ class RecommendedCard extends StatelessWidget {
               borderRadius: borderRadiusOnly(tLeft: 8, tRight: 8),
               child: CachedNetworkImage(
                 fit: BoxFit.cover,
-                imageUrl: "$imgSrc",
+                imageUrl: imgSrc ??
+                    "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png",
                 placeholder: (context, url) =>
                     Image.asset("assets/gif/spinner.gif"),
               ).h(getHeight(95)).w(getWidth(150))),

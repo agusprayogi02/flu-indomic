@@ -29,21 +29,23 @@ Column buildListRecommended(BuildContext context) {
             var to = HomeController.to;
             if (to.isThumbLoading.isTrue) {
               return Image.asset("assets/gif/ripple.gif");
-            } else if (to.isRecommendError.isFalse) {
-              // get data all
-              var data = to.recommended();
-              return ListView.builder(
-                shrinkWrap: true,
-                itemCount: data.length,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => RecommendedCard(
-                  title: "${data[index].title}",
-                  imgSrc: "${data[index].thumb}",
-                  onTap: () => print("tap"),
-                ).marginOnly(right: defaultMargin),
-              );
+            } else {
+              if (to.isRecommendError.isFalse) {
+                // get data all
+                var data = to.recommended();
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: data.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) => RecommendedCard(
+                    title: "${data[index].title}",
+                    imgSrc: data[index].thumb,
+                    onTap: () => print("tap"),
+                  ).marginOnly(right: defaultMargin),
+                );
+              }
+              return "Conection error!".text.headline3(context).makeCentered();
             }
-            return "Conection error!".text.headline3(context).makeCentered();
           },
         ),
       ),

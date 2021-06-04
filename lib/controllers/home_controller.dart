@@ -7,8 +7,8 @@ import 'package:indomic/data/services/repository/thumbnail_repository.dart';
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
 
-  final isThumbLoading = false.obs;
-  final isRecommendLoading = false.obs;
+  final isThumbLoading = true.obs;
+  final isRecommendLoading = true.obs;
   final isThumbError = false.obs;
   final isRecommendError = false.obs;
   final Rx<List<MangaList>> recommended = Rx<List<MangaList>>([MangaList()]);
@@ -24,11 +24,12 @@ class HomeController extends GetxController {
     try {
       var list = await recommendedRepo.getAll();
       recommended(list);
+      isRecommendError(false);
       isRecommendLoading(false);
       return list;
     } catch (e) {
-      isRecommendLoading(false);
       isRecommendError(true);
+      isRecommendLoading(false);
       return null;
     }
   }
@@ -38,11 +39,12 @@ class HomeController extends GetxController {
     try {
       var data = await thumbnailRepo.getAll();
       thumbnail(data);
+      isThumbError(false);
       isThumbLoading(false);
       return data;
     } catch (e) {
-      isThumbLoading(false);
       isThumbError(true);
+      isThumbLoading(false);
       return null;
     }
   }
