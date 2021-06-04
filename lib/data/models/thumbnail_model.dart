@@ -44,7 +44,8 @@ class ThumbnailModel extends Equatable {
 class ThumbMangaList extends Equatable {
   ThumbMangaList({
     this.title = "",
-    this.thumb = "",
+    this.thumb =
+        "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png",
     this.type = Type.MANGA,
     this.updatedOn = "",
     this.endpoint = "",

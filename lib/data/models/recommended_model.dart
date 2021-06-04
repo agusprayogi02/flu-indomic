@@ -44,7 +44,8 @@ class RecommendedModel extends Equatable {
 class MangaList extends Equatable {
   MangaList({
     this.title = "",
-    this.thumb = "",
+    this.thumb =
+        "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png",
     this.endpoint = "",
   });
 

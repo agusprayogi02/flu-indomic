@@ -11,6 +11,9 @@ AppBar buildAppBar() {
     elevation: 0.0,
     toolbarHeight: 45,
     title: TextFormField(
+      style: TextStyle(
+        fontSize: 14,
+      ),
       decoration: InputDecoration(
         prefixIcon: Icon(
           Icons.search,
@@ -20,10 +23,11 @@ AppBar buildAppBar() {
         hintText: "Search Comic..",
         hintStyle: TextStyle(
           color: greyDarkC,
+          fontSize: 13,
         ),
         contentPadding: EdgeInsets.only(
           top: defaultPadding * 0.5,
-          left: defaultPadding,
+          left: defaultPadding / 2,
         ),
         fillColor: greyC,
         filled: true,
