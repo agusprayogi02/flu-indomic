@@ -24,7 +24,7 @@ class ThumbnailCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: getHeight(100),
+      height: getHeight(80),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         // color: Colors.grey[200],
@@ -33,8 +33,8 @@ class ThumbnailCard extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            height: getHeight(100),
-            width: getWidth(75),
+            height: getHeight(80),
+            width: getWidth(100),
             child: CachedNetworkImage(
               fit: BoxFit.cover,
               placeholder: (context, url) =>
@@ -48,7 +48,7 @@ class ThumbnailCard extends StatelessWidget {
             children: [
               "$title"
                   .text
-                  .headline5(context)
+                  .headline6(context)
                   .fontFamily("Poppins")
                   .overflow(TextOverflow.ellipsis)
                   .maxLines(1)
@@ -59,7 +59,7 @@ class ThumbnailCard extends StatelessWidget {
                   .subtitle1(context)
                   .overflow(TextOverflow.ellipsis)
                   .maxLines(1)
-                  .gray600
+                  .gray700
                   .make(),
               Spacer(),
               "$lastUpdated yang lalu"
@@ -67,7 +67,7 @@ class ThumbnailCard extends StatelessWidget {
                   .subtitle2(context)
                   .overflow(TextOverflow.ellipsis)
                   .maxLines(1)
-                  .gray500
+                  .gray600
                   .make(),
             ],
           )
@@ -76,7 +76,7 @@ class ThumbnailCard extends StatelessWidget {
                 right: defaultMargin,
                 bottom: defaultMargin,
               )
-              .w(getWidth(110)),
+              .w(Get.width * 0.69),
         ],
       ),
     ).onInkTap(onPress);

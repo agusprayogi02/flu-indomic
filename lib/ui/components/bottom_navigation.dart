@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:indomic/controllers/master_controller.dart';
-import 'package:indomic/ui/utils/utils.dart';
+import '../../controllers/master_controller.dart';
+import '../utils/utils.dart';
 
 class BottomNavigation extends GetView<MasterController> {
   const BottomNavigation({Key? key}) : super(key: key);
@@ -28,6 +28,8 @@ class BottomNavigation extends GetView<MasterController> {
           horizontal: 20,
           vertical: 10,
         ), // navigation bar padding
+        tabMargin: EdgeInsets.all(defaultMargin * 0.8),
+        textStyle: TextStyle(fontSize: 16, color: darkPrimaryC),
         tabs: [
           GButton(
             icon: Icons.home_rounded,

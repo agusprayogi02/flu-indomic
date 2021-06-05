@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:indomic/ui/components/bottom_navigation.dart';
-import 'package:indomic/ui/pages/home_page/home_page.dart';
-import 'package:indomic/ui/pages/list_category_page/list_category_page.dart';
+
+import '../../components/bottom_navigation.dart';
+import '../home_page/home_page.dart';
+import '../list_category_page/list_category_page.dart';
 import '../../../controllers/master_controller.dart';
 
 class MasterPage extends GetView<MasterController> {
@@ -14,6 +15,7 @@ class MasterPage extends GetView<MasterController> {
           children: [
             HomePage(),
             ListCategoryPage(),
+            Container(),
           ],
           index: MasterController.to.index(),
         ),

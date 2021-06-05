@@ -17,15 +17,9 @@ Expanded buildLatestUpdate(BuildContext context) {
         } else {
           if (to.isThumbError.isFalse) {
             var list = to.thumbnail();
-            return GridView.builder(
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: context.width / 2.1,
-                mainAxisExtent: 100,
-                childAspectRatio: 3 / 2,
-                crossAxisSpacing: defaultMargin * 1.5,
-                mainAxisSpacing: defaultMargin * 1.5,
-              ),
+            return ListView.separated(
               itemCount: list.length,
+              separatorBuilder: (context, index) => Divider(),
               itemBuilder: (context, index) => ThumbnailCard(
                 title: "${list[index].title}",
                 chapter: "${list[index].chapter}",

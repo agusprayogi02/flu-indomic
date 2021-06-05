@@ -19,7 +19,7 @@ class HomeController extends GetxController {
   final RecommendedRepository recommendedRepo;
   final ThumbnailRepository thumbnailRepo;
 
-  getRecommeded() async {
+  getRecommended() async {
     isRecommendLoading(true);
     try {
       var list = await recommendedRepo.getAll();
@@ -34,7 +34,7 @@ class HomeController extends GetxController {
     }
   }
 
-  getLasestUpdated() async {
+  getLastUpdated() async {
     isThumbLoading(true);
     try {
       var data = await thumbnailRepo.getAll();
@@ -53,7 +53,7 @@ class HomeController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    getRecommeded();
-    getLasestUpdated();
+    getRecommended();
+    getLastUpdated();
   }
 }
