@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:indomic/controllers/home_controller.dart';
+import 'package:indomic/routes/app_pages.dart';
 import 'package:indomic/ui/utils/config_size.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -40,7 +41,12 @@ Column buildListRecommended(BuildContext context) {
                   itemBuilder: (context, index) => RecommendedCard(
                     title: "${data[index].title}",
                     imgSrc: data[index].thumb,
-                    onTap: () => print("tap"),
+                    onTap: () {
+                      Get.toNamed(
+                        Routes.DETAIL,
+                        arguments: data[index],
+                      );
+                    },
                   ).marginOnly(right: defaultMargin),
                 );
               }
