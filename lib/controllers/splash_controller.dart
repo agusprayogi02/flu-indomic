@@ -6,11 +6,11 @@ class SplashController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
     // Menunggu 3 s untuk pindah halaman
     Future.delayed(
       Duration(seconds: 3),
       () => Get.offAndToNamed(Routes.MASTER),
     );
+    super.onInit();
   }
 }

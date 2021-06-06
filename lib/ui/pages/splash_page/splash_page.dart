@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:indomic/ui/components/loading_card.dart';
 import '../../../controllers/splash_controller.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -12,19 +13,7 @@ class SplashPage extends GetView<SplashController> {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 100,
-                    width: 100,
-                    child: Image.asset('assets/gif/spinner.gif'),
-                  ),
-                  "Loading ...".text.headline4(context).make(),
-                ],
-              ),
-            ),
+            LoadingCard(),
             Positioned(
               bottom: 0,
               child: "Indomic"

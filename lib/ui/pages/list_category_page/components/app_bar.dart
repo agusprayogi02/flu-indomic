@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:indomic/controllers/list_category_controller.dart';
 import 'package:indomic/ui/utils/utils.dart';
 
 AppBar buildAppBar() {
@@ -25,6 +26,7 @@ AppBar buildAppBar() {
             color: primaryC,
             borderRadius: borderRadiusAll(),
           ),
+          onTap: ListCategoryController.to.onSwich,
           labelStyle: TextStyle(fontSize: 16),
           tabs: [
             Tab(
