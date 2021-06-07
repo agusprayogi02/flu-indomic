@@ -29,6 +29,7 @@ flutter:
   assets:
     - assets/gif/ripple.gif
     - assets/gif/spinner.gif
+    - assets/images/Default_Image_Thumbnail.png
 
   fonts:
     - family: Righteous
