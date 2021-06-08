@@ -1,20 +1,17 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../controllers/detail_controller.dart';
+import 'package:indomic/ui/utils/config_size.dart';
+import 'package:indomic/controllers/detail_controller.dart';
+import 'components/body.dart';
 
 class DetailPage extends GetView<DetailController> {
   @override
   Widget build(BuildContext context) {
+    print(Get.height - getHeight(200));
     return Scaffold(
       body: SafeArea(
-          child: Stack(
-        children: [
-          Column(
-            children: [],
-          ),
-        ],
-      )),
+        child: Body(),
+      ),
     );
   }
 }

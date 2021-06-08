@@ -8,7 +8,8 @@ import 'ui/pages/splash_page/splash_page.dart';
 import 'ui/theme/app_themes.dart';
 
 void main() async {
-  await GetStorage.init();
+  // inisialisai untuk membuat database lokal bookmark
+  await GetStorage.init("bookmark");
   runApp(
     MyApp(),
   );
