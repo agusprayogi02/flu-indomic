@@ -27,7 +27,10 @@ AppBar buildAppBar() {
             borderRadius: borderRadiusAll(),
           ),
           onTap: ListCategoryController.to.onSwich,
-          labelStyle: TextStyle(fontSize: 16),
+          labelStyle: TextStyle(
+            fontSize: 16,
+            fontFamily: "Poppins",
+          ),
           tabs: [
             Tab(
               text: "All",

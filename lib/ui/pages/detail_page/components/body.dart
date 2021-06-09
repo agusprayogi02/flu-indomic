@@ -9,6 +9,7 @@ import 'package:indomic/ui/utils/config_size.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import 'list_chapter.dart';
 import 'list_genre.dart';
 import 'subtitle_text.dart';
 
@@ -31,9 +32,8 @@ class Body extends GetView<DetailController> {
               Positioned(
                 top: 0,
                 child: CachedNetworkImage(
-                  placeholder: (context, url) => LoadingCard(
-                    text: false,
-                  ),
+                  placeholder: (context, url) =>
+                      Image.asset("assets/gif/ripple.gif"),
                   imageUrl: data.thumb,
                   fit: BoxFit.cover,
                   errorWidget: (context, url, error) =>
@@ -119,7 +119,12 @@ class Body extends GetView<DetailController> {
                         RoundedButton(
                           title: "List Chapter",
                           icon: Icons.list_alt,
-                          onPress: () {},
+                          onPress: () {
+                            Get.bottomSheet(
+                              ListChapter(data: data),
+                              backgroundColor: Colors.white,
+                            );
+                          },
                         ),
                         RoundedButton(
                           title: "Start Reading",

@@ -6,4 +6,5 @@ abstract class Routes {
   static const LIST = '/list_category';
   static const MASTER = '/master';
   static const DETAIL = '/detail';
+  static const CHAPTER = '/chapter';
 }

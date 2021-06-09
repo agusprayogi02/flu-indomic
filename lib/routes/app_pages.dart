@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
+import 'package:indomic/bindings/chapter_binding.dart';
 import 'package:indomic/bindings/detail_binding.dart';
 import 'package:indomic/bindings/home_binding.dart';
 import 'package:indomic/bindings/list_category_binding.dart';
 import 'package:indomic/bindings/master_binding.dart';
 import 'package:indomic/bindings/splash_binding.dart';
+import 'package:indomic/ui/pages/chapter_page/chapter_page.dart';
 import 'package:indomic/ui/pages/detail_page/detail_page.dart';
 import 'package:indomic/ui/pages/home_page/home_page.dart';
 import 'package:indomic/ui/pages/list_category_page/list_category_page.dart';
@@ -41,6 +43,11 @@ abstract class AppPages {
       name: Routes.DETAIL,
       page: () => DetailPage(),
       binding: DetailBinding(),
+    ),
+    GetPage(
+      name: Routes.CHAPTER,
+      page: () => ChapterPage(),
+      binding: ChapterBinding(),
     ),
   ];
 }
