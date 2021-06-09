@@ -26,12 +26,12 @@ class SearchBar extends StatelessWidget {
       decoration: InputDecoration(
         prefixIcon: Icon(
           Icons.search,
-          color: greyDarkC,
+          color: primaryC,
           size: 20,
         ),
         hintText: "$hint",
         hintStyle: TextStyle(
-          color: greyDarkC,
+          color: primaryC,
           fontSize: 13,
         ),
         contentPadding: EdgeInsets.only(

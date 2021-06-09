@@ -31,7 +31,7 @@ class CircleButton extends StatelessWidget {
       ),
       child: Icon(
         icon,
-        color: greyDarkC,
+        color: primaryC,
         size: 20,
       ),
     ).onInkTap(onPress).tooltip("$tooltip");

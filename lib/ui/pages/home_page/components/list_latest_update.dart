@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:indomic/controllers/home_controller.dart';
+import 'package:indomic/routes/app_pages.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -24,7 +25,9 @@ Expanded buildLatestUpdate(BuildContext context) {
                 title: "${list[index].title}",
                 chapter: "${list[index].chapter}",
                 lastUpdated: "${list[index].updatedOn}",
-                onPress: () {},
+                onPress: () {
+                  Get.toNamed(Routes.DETAIL, arguments: list[index]);
+                },
                 imgSrc: list[index].thumb,
               ),
             ).marginSymmetric(horizontal: defaultMargin * 1.5);

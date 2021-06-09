@@ -6,10 +6,12 @@ class LoadingCard extends StatelessWidget {
     Key? key,
     this.height = 100,
     this.width = 100,
+    this.text = true,
   }) : super(key: key);
 
   final double height;
   final double width;
+  final bool text;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class LoadingCard extends StatelessWidget {
             width: width,
             child: Image.asset('assets/gif/spinner.gif'),
           ),
-          "Loading ...".text.headline4(context).make(),
+          if (text) "Loading ...".text.headline4(context).make(),
         ],
       ),
     );

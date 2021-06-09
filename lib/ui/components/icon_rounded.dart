@@ -20,8 +20,9 @@ class IconRounded extends StatelessWidget {
       child: Icon(
         icon,
         size: 35,
+        color: primaryC,
       ),
-      color: textC.withOpacity(0.9),
+      color: greyC.withOpacity(0.9),
     ).cornerRadius(8).onInkTap(onPress);
   }
 }

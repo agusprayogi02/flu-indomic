@@ -55,7 +55,6 @@ class ThumbnailCard extends StatelessWidget {
                   .fontFamily("Poppins")
                   .overflow(TextOverflow.ellipsis)
                   .maxLines(1)
-                  .black
                   .make(),
               "$chapter"
                   .text
