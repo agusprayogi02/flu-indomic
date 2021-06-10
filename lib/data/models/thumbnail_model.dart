@@ -46,7 +46,7 @@ class ThumbMangaList extends Equatable {
     this.title = "",
     this.thumb =
         "https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png",
-    this.type = Type.MANGA,
+    this.type = "",
     this.updatedOn = "",
     this.endpoint = "",
     this.chapter = "",
@@ -54,7 +54,7 @@ class ThumbMangaList extends Equatable {
 
   final String title;
   final String thumb;
-  final Type type;
+  final String type;
   final String updatedOn;
   final String endpoint;
   final String chapter;
@@ -62,7 +62,7 @@ class ThumbMangaList extends Equatable {
   factory ThumbMangaList.fromJson(Map<String, dynamic> json) => ThumbMangaList(
         title: json["title"],
         thumb: json["thumb"],
-        type: typeValues.map[json["type"]] ?? Type.MANGA,
+        type: json["type"],
         updatedOn: json["updated_on"],
         endpoint: json["endpoint"],
         chapter: json["chapter"] ?? "",
@@ -71,7 +71,7 @@ class ThumbMangaList extends Equatable {
   Map<String, dynamic> toJson() => {
         "title": title,
         "thumb": thumb,
-        "type": typeValues.reverse[type],
+        "type": type,
         "updated_on": updatedOn,
         "endpoint": endpoint,
         "chapter": chapter,
@@ -87,23 +87,4 @@ class ThumbMangaList extends Equatable {
         endpoint,
         chapter,
       ];
-}
-
-enum Type { MANGA, MANHUA, MANHWA }
-
-final typeValues = EnumValues(
-    {"Manga": Type.MANGA, "Manhua": Type.MANHUA, "Manhwa": Type.MANHWA});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String> reverseMap = Map();
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    if (reverseMap.isEmpty) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
-    return reverseMap;
-  }
 }

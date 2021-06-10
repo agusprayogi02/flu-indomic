@@ -10,16 +10,20 @@ class ThumbnailCard extends StatelessWidget {
     Key? key,
     required this.onPress,
     required this.title,
-    required this.chapter,
+    this.chapter,
     required this.lastUpdated,
     required this.imgSrc,
+    this.isMangaType = false,
+    this.type,
   }) : super(key: key);
 
   final Function() onPress;
   final String title;
-  final String chapter;
+  final String? chapter;
   final String lastUpdated;
   final String imgSrc;
+  final bool isMangaType;
+  final String? type;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +60,7 @@ class ThumbnailCard extends StatelessWidget {
                   .overflow(TextOverflow.ellipsis)
                   .maxLines(1)
                   .make(),
-              "$chapter"
+              "${isMangaType ? type : chapter}"
                   .text
                   .subtitle1(context)
                   .overflow(TextOverflow.ellipsis)

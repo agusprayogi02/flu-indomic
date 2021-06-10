@@ -29,9 +29,10 @@ class Body extends StatelessWidget {
                     Get.toNamed(Routes.DETAIL, arguments: item);
                   },
                   title: item.title,
-                  chapter: "${item.chapter}",
                   lastUpdated: "${item.updatedOn}",
                   imgSrc: item.thumb,
+                  isMangaType: true,
+                  type: item.type.toString(),
                 );
               },
               separatorBuilder: (context, index) => Divider(),
