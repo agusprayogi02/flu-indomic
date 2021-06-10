@@ -22,7 +22,7 @@ class ListChapter extends StatelessWidget {
           var chapter = data.chapter![index];
           return InkWell(
             onTap: () {
-              print(chapter.chapterTitle);
+              Get.back();
               Get.toNamed(Routes.CHAPTER, arguments: chapter);
             },
             child: Container(

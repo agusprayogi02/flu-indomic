@@ -12,7 +12,7 @@ class DetailController extends GetxController {
   DetailController({required this.repository});
 
   getDetailKomic() async {
-    var args = Get.arguments;
+    var args = Get.arguments; //ThumbMangaList
     print(args.endpoint);
     isLoading(true);
     try {

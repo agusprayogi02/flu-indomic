@@ -21,6 +21,7 @@ class ChapterController extends GetxController {
       var chapter = await repository.getAll(chapter: args.chapterEndpoint);
       print(chapter.chapterPages);
       data(chapter);
+      isError(false);
       isLoading(false);
     } catch (e) {
       isError(true);

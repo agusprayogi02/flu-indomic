@@ -10,6 +10,11 @@ class ThumbnailRepository {
     return await api.getLatestUpdate(index);
   }
 
+  Future<List<ThumbMangaList>> getSearch({String args = ""}) async {
+    print("search args: $args");
+    return await api.getSearch(args);
+  }
+
   Future<List<ThumbMangaList>> getManhua({int index = 1}) async {
     return await api.getManhua(index);
   }

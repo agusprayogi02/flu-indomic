@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.github.agusprayogi02.indomic">
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+
    <application
         android:label="indomic"
         android:icon="@mipmap/ic_launcher">

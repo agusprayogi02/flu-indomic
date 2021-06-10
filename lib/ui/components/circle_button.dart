@@ -8,11 +8,13 @@ class CircleButton extends StatelessWidget {
     required this.icon,
     required this.onPress,
     this.tooltip = "",
+    this.isLeft = true,
   }) : super(key: key);
 
   final IconData icon;
   final Function() onPress;
   final String tooltip;
+  final bool isLeft;
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +27,15 @@ class CircleButton extends StatelessWidget {
         color: greyC,
       ),
       margin: EdgeInsets.only(
-        right: defaultMargin * 1.4,
-        top: defaultMargin * 1.5,
+        right: isLeft ? 0 : defaultMargin * 1.4,
+        left: isLeft ? defaultMargin * 1.4 : 0,
+        top: defaultMargin * 1.3,
         bottom: defaultMargin * 0.5,
       ),
       child: Icon(
         icon,
         color: primaryC,
-        size: 20,
+        size: 24,
       ),
     ).onInkTap(onPress).tooltip("$tooltip");
   }

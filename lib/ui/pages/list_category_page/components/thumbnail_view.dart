@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:indomic/controllers/list_category_controller.dart';
 import 'package:indomic/routes/app_pages.dart';
 import 'package:indomic/ui/components/loading_card.dart';
-import 'package:indomic/ui/pages/home_page/components/thumbnail_card.dart';
+import 'package:indomic/ui/components/thumbnail_card.dart';
 import 'package:indomic/ui/utils/config_size.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:get/get.dart';

@@ -65,7 +65,7 @@ class ThumbMangaList extends Equatable {
         type: typeValues.map[json["type"]] ?? Type.MANGA,
         updatedOn: json["updated_on"],
         endpoint: json["endpoint"],
-        chapter: json["chapter"],
+        chapter: json["chapter"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

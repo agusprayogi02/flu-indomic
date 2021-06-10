@@ -5,7 +5,7 @@ import 'package:indomic/routes/app_pages.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import './thumbnail_card.dart';
+import '../../../components/thumbnail_card.dart';
 
 Expanded buildLatestUpdate(BuildContext context) {
   return Expanded(

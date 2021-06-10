@@ -7,4 +7,5 @@ abstract class Routes {
   static const MASTER = '/master';
   static const DETAIL = '/detail';
   static const CHAPTER = '/chapter';
+  static const SEARCH = '/search';
 }

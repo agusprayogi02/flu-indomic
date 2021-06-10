@@ -9,30 +9,43 @@ class SearchBar extends StatelessWidget {
     required this.hint,
     this.onChanged,
     this.onTap,
+    this.controller,
+    this.onEditingComplete,
+    this.disabled = true,
+    this.onFieldSubmitted,
   }) : super(key: key);
 
   final String hint;
   final Function(String value)? onChanged;
   final Function()? onTap;
+  final TextEditingController? controller;
+  final Function()? onEditingComplete;
+  final bool disabled;
+  final Function(String x)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       style: TextStyle(
-        fontSize: 14,
+        fontSize: 16,
+        color: darkPrimaryC,
       ),
       onChanged: onChanged,
       onTap: onTap,
+      controller: controller,
+      enabled: disabled,
+      onEditingComplete: onEditingComplete,
+      onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
         prefixIcon: Icon(
           Icons.search,
           color: primaryC,
-          size: 20,
+          size: 24,
         ),
         hintText: "$hint",
         hintStyle: TextStyle(
           color: primaryC,
-          fontSize: 13,
+          fontSize: 16,
         ),
         contentPadding: EdgeInsets.only(
           top: defaultPadding * 0.5,
@@ -45,6 +58,6 @@ class SearchBar extends StatelessWidget {
           borderRadius: BorderRadius.all(defaultRadius()),
         ),
       ),
-    ).h(32).marginOnly(top: defaultMargin * 1.2);
+    ).h(40).marginOnly(top: defaultMargin * 0.5);
   }
 }
