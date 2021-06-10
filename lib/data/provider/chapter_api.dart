@@ -4,10 +4,18 @@ import 'package:indomic/ui/utils/utils.dart';
 
 class ChapterApi extends GetConnect {
   Future<ChapterModel> getChapter(String chapter) async {
-    var response = await get(BASE_URL + "chapter/" + chapter);
-    if (response.hasError) {
-      throw Error();
-    }
+    var index = 3, pages;
+    Response response;
+    // menggulang jika chapter pages = 0
+    do {
+      response = await get(BASE_URL + "chapter/" + chapter);
+      // print("Chapter Ulang : $index");
+      if (response.hasError) {
+        throw Error();
+      }
+      pages = response.body["chapter_pages"];
+      index--;
+    } while (index >= 1 && pages == 0);
     var list = ChapterModel.fromJson(response.body);
     return list;
   }

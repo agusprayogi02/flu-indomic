@@ -7,11 +7,13 @@ class LoadingCard extends StatelessWidget {
     this.height = 100,
     this.width = 100,
     this.text = true,
+    this.image = 1, // jika 1 = spinner, lainnya = ripple
   }) : super(key: key);
 
   final double height;
   final double width;
   final bool text;
+  final int image;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,9 @@ class LoadingCard extends StatelessWidget {
           SizedBox(
             height: height,
             width: width,
-            child: Image.asset('assets/gif/spinner.gif'),
+            child: Image.asset(image == 1
+                ? 'assets/gif/spinner.gif'
+                : "assets/gif/ripple.gif"),
           ),
           if (text) "Loading ...".text.headline4(context).make(),
         ],

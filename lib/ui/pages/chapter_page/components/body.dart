@@ -15,11 +15,11 @@ class Body extends GetView<ChapterController> {
         return LoadingCard();
       } else {
         if (to.isError.isFalse) {
-          var data = to.data();
+          var listImage = to.data().chapterImage!;
           return ListView.builder(
-            itemCount: data.chapterImage!.length,
+            itemCount: listImage.length,
             itemBuilder: (context, index) {
-              var image = data.chapterImage![index];
+              var image = listImage[index];
               return SizedBox(
                 width: Get.width,
                 child: CachedNetworkImage(

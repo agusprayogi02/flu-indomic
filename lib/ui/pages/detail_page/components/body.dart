@@ -32,8 +32,10 @@ class Body extends GetView<DetailController> {
               Positioned(
                 top: 0,
                 child: CachedNetworkImage(
-                  placeholder: (context, url) =>
-                      Image.asset("assets/gif/ripple.gif"),
+                  placeholder: (context, url) => LoadingCard(
+                    text: false,
+                    image: 0,
+                  ),
                   imageUrl: data.thumb,
                   fit: BoxFit.cover,
                   errorWidget: (context, url, error) =>

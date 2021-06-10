@@ -20,15 +20,19 @@ class ListChapter extends StatelessWidget {
         itemCount: data.chapter!.length,
         itemBuilder: (context, index) {
           var chapter = data.chapter![index];
-          return Container(
-            padding: EdgeInsets.all(defaultPadding * 1.5),
-            margin: EdgeInsets.all(defaultMargin),
-            decoration:
-                BoxDecoration(color: greyC, borderRadius: borderRadiusAll()),
-            child: "${chapter.chapterTitle}".text.headline6(context).make(),
-          ).onTap(() {
-            Get.toNamed(Routes.CHAPTER, arguments: chapter);
-          });
+          return InkWell(
+            onTap: () {
+              print(chapter.chapterTitle);
+              Get.toNamed(Routes.CHAPTER, arguments: chapter);
+            },
+            child: Container(
+              padding: EdgeInsets.all(defaultPadding * 1.5),
+              margin: EdgeInsets.all(defaultMargin),
+              decoration:
+                  BoxDecoration(color: greyC, borderRadius: borderRadiusAll()),
+              child: "${chapter.chapterTitle}".text.headline6(context).make(),
+            ),
+          );
         },
       ),
     );
