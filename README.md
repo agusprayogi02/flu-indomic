@@ -8,6 +8,7 @@ Sumber API :
 
 Teknologi yang dipakai:
   - Getx
+  - Getx_Storage
   - Velocity_x
   - cached_network_image
   - google_nav_bar
