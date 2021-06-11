@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:indomic/ui/pages/bookmark_page/bookmark_page.dart';
 
 import '../../components/bottom_navigation.dart';
 import '../home_page/home_page.dart';
@@ -15,7 +16,7 @@ class MasterPage extends GetView<MasterController> {
           children: [
             HomePage(),
             ListCategoryPage(),
-            Container(),
+            BookmarkPage(),
           ],
           index: MasterController.to.index(),
         ),

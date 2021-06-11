@@ -14,7 +14,7 @@ Column buildListRecommended(BuildContext context) {
     children: [
       SelectionTitle(
         title: "Recommended",
-        onPress: () {},
+        isButton: false,
       ),
       Container(
         width: context.width,

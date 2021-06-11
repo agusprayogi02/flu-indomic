@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:indomic/ui/components/circle_button.dart';
 import 'package:indomic/ui/utils/config_size.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,8 @@ class ThumbnailCard extends StatelessWidget {
     required this.imgSrc,
     this.isMangaType = false,
     this.type,
+    required this.btnIcon,
+    this.btnPress,
   }) : super(key: key);
 
   final Function() onPress;
@@ -24,6 +27,8 @@ class ThumbnailCard extends StatelessWidget {
   final String imgSrc;
   final bool isMangaType;
   final String? type;
+  final IconData btnIcon;
+  final Function()? btnPress;
 
   @override
   Widget build(BuildContext context) {
@@ -50,39 +55,43 @@ class ThumbnailCard extends StatelessWidget {
               ),
             ).cornerRadius(10),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              "$title"
-                  .text
-                  .headline6(context)
-                  .fontFamily("Poppins")
-                  .overflow(TextOverflow.ellipsis)
-                  .maxLines(1)
-                  .make(),
-              "${isMangaType ? type : chapter}"
-                  .text
-                  .subtitle1(context)
-                  .overflow(TextOverflow.ellipsis)
-                  .maxLines(1)
-                  .gray700
-                  .make(),
-              Spacer(),
-              "$lastUpdated yang lalu"
-                  .text
-                  .subtitle2(context)
-                  .overflow(TextOverflow.ellipsis)
-                  .maxLines(1)
-                  .gray600
-                  .make(),
-            ],
-          )
-              .marginOnly(
-                left: defaultMargin,
-                right: defaultMargin,
-                bottom: defaultMargin,
-              )
-              .w(Get.width * 0.69),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                "$title"
+                    .text
+                    .headline6(context)
+                    .fontFamily("Poppins")
+                    .overflow(TextOverflow.ellipsis)
+                    .maxLines(1)
+                    .make(),
+                "${isMangaType ? type : chapter}"
+                    .text
+                    .subtitle1(context)
+                    .overflow(TextOverflow.ellipsis)
+                    .maxLines(1)
+                    .gray700
+                    .make(),
+                Spacer(),
+                "$lastUpdated yang lalu"
+                    .text
+                    .subtitle2(context)
+                    .overflow(TextOverflow.ellipsis)
+                    .maxLines(1)
+                    .gray600
+                    .make(),
+              ],
+            ).marginOnly(
+              left: defaultMargin,
+              bottom: defaultMargin,
+            ),
+          ),
+          CircleButton(
+            icon: btnIcon,
+            tooltip: "",
+            onPress: btnPress ?? onPress,
+          ),
         ],
       ),
     ).onInkTap(onPress);

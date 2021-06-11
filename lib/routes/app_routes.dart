@@ -8,4 +8,5 @@ abstract class Routes {
   static const DETAIL = '/detail';
   static const CHAPTER = '/chapter';
   static const SEARCH = '/search';
+  static const BOOKMARK = '/bookMark';
 }

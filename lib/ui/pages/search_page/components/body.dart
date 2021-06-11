@@ -28,6 +28,7 @@ class Body extends StatelessWidget {
                   onPress: () {
                     Get.toNamed(Routes.DETAIL, arguments: item);
                   },
+                  btnIcon: Icons.arrow_forward_ios_rounded,
                   title: item.title,
                   lastUpdated: "${item.updatedOn}",
                   imgSrc: item.thumb,

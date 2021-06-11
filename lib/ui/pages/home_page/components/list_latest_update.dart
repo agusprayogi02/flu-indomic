@@ -25,6 +25,7 @@ Expanded buildLatestUpdate(BuildContext context) {
                 title: "${list[index].title}",
                 chapter: "${list[index].chapter}",
                 lastUpdated: "${list[index].updatedOn}",
+                btnIcon: Icons.arrow_forward_ios_rounded,
                 onPress: () {
                   Get.toNamed(Routes.DETAIL, arguments: list[index]);
                 },

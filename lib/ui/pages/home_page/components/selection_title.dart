@@ -7,11 +7,13 @@ class SelectionTitle extends StatelessWidget {
   const SelectionTitle({
     Key? key,
     required this.title,
-    required this.onPress,
+    this.onPress,
+    this.isButton = true,
   }) : super(key: key);
 
   final String title;
-  final Function() onPress;
+  final Function()? onPress;
+  final bool isButton;
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +21,12 @@ class SelectionTitle extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         "$title".text.headline5(context).make(),
-        TextButton(
-          onPressed: onPress,
-          child: "View All".text.color(lightPrimaryC).make(),
-        ),
+        isButton
+            ? TextButton(
+                onPressed: onPress,
+                child: "View All".text.color(lightPrimaryC).make(),
+              )
+            : Text(""),
       ],
     ).marginSymmetric(horizontal: defaultMargin * 1.5);
   }

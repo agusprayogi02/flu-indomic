@@ -40,6 +40,7 @@ class ThumbnailView extends GetView<ListCategoryController> {
                       onPress: () {
                         Get.toNamed(Routes.DETAIL, arguments: data[index]);
                       },
+                      btnIcon: Icons.arrow_forward_ios_rounded,
                       title: "${data[index].title}",
                       chapter: "${data[index].chapter}",
                       lastUpdated: "${data[index].updatedOn}",

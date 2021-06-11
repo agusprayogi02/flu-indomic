@@ -19,6 +19,7 @@ class BookmarkModel extends Equatable {
     this.endpoint = "",
     this.chapter = "",
     this.totalChapter = 0,
+    this.isBookmark = false,
   });
 
   final int index;
@@ -27,6 +28,7 @@ class BookmarkModel extends Equatable {
   final String endpoint;
   final String chapter;
   final int totalChapter;
+  final bool isBookmark;
 
   factory BookmarkModel.fromJson(Map<String, dynamic> json) => BookmarkModel(
         index: json["index"],
@@ -35,6 +37,7 @@ class BookmarkModel extends Equatable {
         endpoint: json["endpoint"],
         chapter: json["chapter"],
         totalChapter: json["total_chapter"],
+        isBookmark: json["is_bookmark"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -44,9 +47,17 @@ class BookmarkModel extends Equatable {
         "endpoint": endpoint,
         "chapter": chapter,
         "total_chapter": totalChapter,
+        "is_bookmark": isBookmark,
       };
 
   @override
-  List<Object?> get props =>
-      [index, title, thumb, endpoint, chapter, totalChapter];
+  List<Object?> get props => [
+        index,
+        title,
+        thumb,
+        endpoint,
+        chapter,
+        totalChapter,
+        isBookmark,
+      ];
 }

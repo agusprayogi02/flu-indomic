@@ -11,4 +11,6 @@ class StorageController extends GetxController {
   void writeBookmark(String key, String value) => box.write(key, value);
 
   BookmarkModel readBookmark(String key) => box.read(key);
+
+  void removeBookmark(String key) => box.remove(key);
 }
