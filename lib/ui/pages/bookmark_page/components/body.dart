@@ -12,7 +12,10 @@ class Body extends GetView<BookmarkController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(defaultMargin * 1.5),
+      margin: EdgeInsets.symmetric(
+        horizontal: defaultMargin * 1.5,
+        vertical: defaultMargin,
+      ),
       child: Obx(() {
         var bookmarks = BookmarkController.to.getBookmarks();
         // print(bookmarks);
@@ -29,6 +32,7 @@ class Body extends GetView<BookmarkController> {
               btnIcon: Icons.delete_forever_rounded,
               chapter: "Last Read Chapter ${item.index}",
               btnPress: () => BookmarkController.to.delete(item.endpoint),
+              btnColor: Colors.red,
             );
           },
         );

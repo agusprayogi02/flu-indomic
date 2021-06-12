@@ -26,6 +26,7 @@ Expanded buildLatestUpdate(BuildContext context) {
                 chapter: "${list[index].chapter}",
                 lastUpdated: "${list[index].updatedOn}",
                 btnIcon: Icons.arrow_forward_ios_rounded,
+                btnColor: primaryC,
                 onPress: () {
                   Get.toNamed(Routes.DETAIL, arguments: list[index]);
                 },
