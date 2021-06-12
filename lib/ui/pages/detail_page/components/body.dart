@@ -21,6 +21,7 @@ class Body extends GetView<DetailController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
+      // initaial Get.find DetailController
       var to = DetailController.to;
       if (to.isLoading()) {
         return LoadingCard();
@@ -82,7 +83,7 @@ class Body extends GetView<DetailController> {
                         ),
                         SubtitleText(
                           title: "Total Chapter",
-                          subTitle: (data.chapter!.length + 1).toString(),
+                          subTitle: (data.chapter!.length).toString(),
                         ),
                         SubtitleText(
                           title: "Type",
@@ -129,9 +130,11 @@ class Body extends GetView<DetailController> {
                           },
                         ),
                         RoundedButton(
-                          title: "Start Reading",
+                          title: to.isSave.isFalse
+                              ? "Start Reading"
+                              : "Continue Reading",
                           icon: Icons.menu_book_rounded,
-                          onPress: () {},
+                          onPress: () => to.startReading(),
                         ),
                       ],
                     ),
@@ -152,8 +155,10 @@ class Body extends GetView<DetailController> {
                 top: 10,
                 right: 10,
                 child: IconRounded(
-                  icon: Icons.bookmark_added_rounded,
-                  onPress: () {},
+                  icon: to.isSave()
+                      ? Icons.bookmark_added_rounded
+                      : Icons.bookmark_add_rounded,
+                  onPress: () => to.saveBookmark(),
                 ),
               ),
             ],

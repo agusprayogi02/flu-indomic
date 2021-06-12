@@ -18,6 +18,7 @@ class ThumbnailCard extends StatelessWidget {
     this.type,
     required this.btnIcon,
     this.btnPress,
+    this.btnColor,
   }) : super(key: key);
 
   final Function() onPress;
@@ -29,6 +30,7 @@ class ThumbnailCard extends StatelessWidget {
   final String? type;
   final IconData btnIcon;
   final Function()? btnPress;
+  final Color? btnColor;
 
   @override
   Widget build(BuildContext context) {
@@ -74,13 +76,14 @@ class ThumbnailCard extends StatelessWidget {
                     .gray700
                     .make(),
                 Spacer(),
-                "$lastUpdated yang lalu"
-                    .text
-                    .subtitle2(context)
-                    .overflow(TextOverflow.ellipsis)
-                    .maxLines(1)
-                    .gray600
-                    .make(),
+                if (lastUpdated != "")
+                  "$lastUpdated yang lalu"
+                      .text
+                      .subtitle2(context)
+                      .overflow(TextOverflow.ellipsis)
+                      .maxLines(1)
+                      .gray600
+                      .make(),
               ],
             ).marginOnly(
               left: defaultMargin,

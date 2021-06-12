@@ -32,7 +32,7 @@ AppBar buildAppBar() {
         onPress: () {},
         isLeft: false,
         tooltip: "Book Mark",
-        icon: Icons.bookmark,
+        icon: Icons.language_rounded,
       ),
     ],
   );

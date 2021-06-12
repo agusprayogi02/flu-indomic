@@ -6,11 +6,35 @@ class StorageController extends GetxController {
   static StorageController get to => Get.find();
   final GetStorage box = GetStorage('bookmark');
 
-  get readAll => box.getKeys();
+  Iterable<String> get readAll => box.getKeys();
 
-  void writeBookmark(String key, String value) => box.write(key, value);
+  void writeBookmark(String key, BookmarkModel value) {
+    box.write(
+      key,
+      bookmarkModelToJson(value),
+    );
+  }
 
-  BookmarkModel readBookmark(String key) => box.read(key);
+  bool cekKey(String key) => this.readAll.contains(key);
 
-  void removeBookmark(String key) => box.remove(key);
+  BookmarkModel readBookmark(String key) {
+    return bookmarkModelFromJson(box.read(key));
+  }
+
+  void removeBookmark(String key) {
+    if (this.cekKey(key)) {
+      box.remove(key);
+    }
+  }
+
+  updateTotal(String key, {int val = 10}) {
+    if (this.cekKey(key)) {
+      String read = box.read(key);
+      print(read);
+      BookmarkModel book = bookmarkModelFromJson(read);
+      book.totalChapter = val;
+      print(book);
+      this.writeBookmark(key, book);
+    }
+  }
 }
