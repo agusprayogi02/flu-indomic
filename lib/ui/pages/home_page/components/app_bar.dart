@@ -5,6 +5,7 @@ import 'package:indomic/controllers/search_controller.dart';
 import 'package:indomic/routes/app_pages.dart';
 import 'package:indomic/ui/components/circle_button.dart';
 import 'package:indomic/ui/components/search_bar.dart';
+import 'package:indomic/ui/utils/utils.dart';
 
 AppBar buildAppBar() {
   return AppBar(
@@ -27,12 +28,14 @@ AppBar buildAppBar() {
           HomeController.to.getRecommended();
           HomeController.to.getLastUpdated();
         },
+        marginVertical: defaultMargin * 1.2,
       ),
       CircleButton(
         onPress: () {},
         isLeft: false,
         tooltip: "Book Mark",
         icon: Icons.language_rounded,
+        marginVertical: defaultMargin * 1.2,
       ),
     ],
   );

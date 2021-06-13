@@ -71,4 +71,10 @@ class DetailController extends GetxController {
     getDetailKomic();
     super.onInit();
   }
+
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+  }
 }

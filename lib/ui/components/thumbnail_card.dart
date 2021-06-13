@@ -95,6 +95,7 @@ class ThumbnailCard extends StatelessWidget {
             tooltip: "",
             onPress: btnPress ?? onPress,
             color: btnColor,
+            isLeft: false,
           ),
         ],
       ),

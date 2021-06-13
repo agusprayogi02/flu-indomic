@@ -58,6 +58,6 @@ class SearchBar extends StatelessWidget {
           borderRadius: BorderRadius.all(defaultRadius()),
         ),
       ),
-    ).h(40).marginOnly(top: defaultMargin * 0.5);
+    ).h(35).marginOnly(top: defaultMargin * 0.3);
   }
 }

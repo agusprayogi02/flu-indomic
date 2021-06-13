@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:indomic/data/models/thumbnail_model.dart';
-import 'package:indomic/ui/utils/utils.dart';
+import 'package:indomic/data/services/http_client.dart';
 
 class ThumbnailApi extends GetConnect {
 // Get request
   Future<List<ThumbMangaList>> getLatestUpdate(int index) async {
-    var response = await get(BASE_URL + "manga/page/$index");
+    var response = await HttpGetClient().getRequest("manga/page/$index");
     if (response.status.hasError) {
       throw Error();
     }
@@ -17,7 +17,7 @@ class ThumbnailApi extends GetConnect {
   }
 
   Future<List<ThumbMangaList>> getSearch(String args) async {
-    var response = await get(BASE_URL + 'search/' + args);
+    var response = await HttpGetClient().getRequest('search/' + args);
     if (response.status.hasError) {
       throw Error.safeToString(response.statusText);
     }
@@ -30,7 +30,7 @@ class ThumbnailApi extends GetConnect {
   }
 
   Future<List<ThumbMangaList>> getManhua(int index) async {
-    var response = await get(BASE_URL + "manhua/$index");
+    var response = await HttpGetClient().getRequest("manhua/$index");
     if (response.status.hasError) {
       throw Error();
     }
@@ -42,7 +42,7 @@ class ThumbnailApi extends GetConnect {
   }
 
   Future<List<ThumbMangaList>> getManhwa(int index) async {
-    var response = await get(BASE_URL + "manhwa/$index");
+    var response = await HttpGetClient().getRequest("manhwa/$index");
     if (response.status.hasError) {
       throw Error();
     }

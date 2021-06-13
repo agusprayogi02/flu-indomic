@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:indomic/data/models/detail_model.dart';
-import 'package:indomic/ui/utils/utils.dart';
+import 'package:indomic/data/services/http_client.dart';
 
 class DetailApi extends GetConnect {
   Future<DetailModel> getDetail(String endPoint) async {
@@ -8,12 +8,9 @@ class DetailApi extends GetConnect {
     Response response;
     // menggulang jika title isinya kosong
     do {
-      response = await get(BASE_URL + 'manga/detail/' + endPoint);
       // print("Detail Ulang : $index");
-      if (response.status.hasError) {
-        print(response.status.code);
-        throw Error();
-      }
+      response = await HttpGetClient().getRequest('manga/detail/' + endPoint);
+
       title = response.body["title"];
       index--;
     } while (index >= 1 && title == "");
