@@ -24,15 +24,14 @@ class ThumbnailView extends GetView<ListCategoryController> {
         children: [
           Expanded(
             child: Obx(() {
-              var to = ListCategoryController.to;
-              if (to.isLoading.isTrue) {
+              if (controller.isLoading.isTrue) {
                 return LoadingCard(
                   height: getHeight(200),
                   width: getWidth(200),
                 );
               } else {
-                if (to.isError.isFalse) {
-                  var data = to.data();
+                if (controller.isError.isFalse) {
+                  var data = controller.data();
                   return ListView.separated(
                     separatorBuilder: (context, index) => Divider(),
                     itemCount: data.length,

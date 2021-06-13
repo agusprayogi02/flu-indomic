@@ -22,7 +22,7 @@ Column buildListRecommended(BuildContext context) {
         margin: EdgeInsets.only(
           left: defaultMargin * 1.5,
           right: defaultMargin * 1.5,
-          bottom: defaultMargin / 2,
+          top: defaultMargin * 1.5,
         ),
         child: Obx(
           () {

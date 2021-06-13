@@ -17,22 +17,22 @@ class Body extends GetView<BookmarkController> {
         vertical: defaultMargin,
       ),
       child: Obx(() {
-        var bookmarks = BookmarkController.to.getBookmarks();
+        var bookmarks = controller.getBookmarks();
         // print(bookmarks);
         return ListView.separated(
           separatorBuilder: (context, index) => Divider(),
           itemCount: bookmarks.length,
           itemBuilder: (context, index) {
-            var item = BookmarkController.to.storageController
+            var item = controller.storageController
                 .readBookmark(bookmarks.elementAt(index));
             return ThumbnailCard(
-              onPress: () => BookmarkController.to.toDetails(item),
+              onPress: () => controller.toDetails(item),
               title: item.title,
               lastUpdated: "",
               imgSrc: item.thumb,
               btnIcon: Icons.delete_forever_rounded,
               chapter: "Last Read Chapter ${item.index}",
-              btnPress: () => BookmarkController.to.delete(item.endpoint),
+              btnPress: () => controller.delete(item.endpoint),
               btnColor: Colors.red,
             );
           },

@@ -18,7 +18,7 @@ class MasterPage extends GetView<MasterController> {
             ListCategoryPage(),
             BookmarkPage(),
           ],
-          index: MasterController.to.index(),
+          index: controller.index(),
         ),
       ),
       bottomNavigationBar: BottomNavigation(),

@@ -22,7 +22,7 @@ class Body extends GetView<DetailController> {
   Widget build(BuildContext context) {
     return Obx(() {
       // initaial Get.find DetailController
-      var to = DetailController.to;
+      var to = controller;
       if (to.isLoading()) {
         return LoadingCard();
       } else {

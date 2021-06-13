@@ -6,7 +6,7 @@ import 'package:indomic/ui/components/loading_card.dart';
 import 'package:indomic/ui/components/thumbnail_card.dart';
 import 'package:indomic/ui/utils/utils.dart';
 
-class Body extends StatelessWidget {
+class Body extends GetView<SearchController> {
   const Body({
     Key? key,
   }) : super(key: key);
@@ -16,14 +16,13 @@ class Body extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(defaultMargin),
       child: Obx(() {
-        var to = SearchController.to;
-        if (to.isLoading.isTrue) {
+        if (controller.isLoading.isTrue) {
           return LoadingCard();
         } else {
-          if (to.isError.isFalse) {
+          if (controller.isError.isFalse) {
             return ListView.separated(
               itemBuilder: (context, index) {
-                var item = to.data()[index];
+                var item = controller.data()[index];
                 return ThumbnailCard(
                   onPress: () {
                     Get.toNamed(Routes.DETAIL, arguments: item);
@@ -37,7 +36,7 @@ class Body extends StatelessWidget {
                 );
               },
               separatorBuilder: (context, index) => Divider(),
-              itemCount: to.data().length,
+              itemCount: controller.data().length,
             );
           } else {
             return Text("Error");

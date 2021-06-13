@@ -10,12 +10,11 @@ class Body extends GetView<ChapterController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      var to = ChapterController.to;
-      if (to.isLoading.isTrue) {
+      if (controller.isLoading.isTrue) {
         return LoadingCard();
       } else {
-        if (to.isError.isFalse) {
-          var listImage = to.data().chapterImage!;
+        if (controller.isError.isFalse) {
+          var listImage = controller.data().chapterImage!;
           return ListView.builder(
             itemCount: listImage.length,
             itemBuilder: (context, index) {
