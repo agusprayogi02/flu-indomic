@@ -26,6 +26,7 @@ class ListCategoryController extends GetxController {
       isError(false);
       isLoading(false);
     } catch (e) {
+      print(e.toString());
       isError(true);
       isLoading(false);
     }

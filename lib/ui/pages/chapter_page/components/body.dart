@@ -9,32 +9,28 @@ class Body extends GetView<ChapterController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      if (controller.isLoading.isTrue) {
-        return LoadingCard();
-      } else {
-        if (controller.isError.isFalse) {
-          var listImage = controller.data().chapterImage!;
-          return ListView.builder(
-            itemCount: listImage.length,
-            itemBuilder: (context, index) {
-              var image = listImage[index];
-              return SizedBox(
-                width: Get.width,
-                child: CachedNetworkImage(
-                  placeholder: (context, url) =>
-                      Image.asset("assets/gif/ripple.gif"),
-                  imageUrl: image.chapterImageLink,
-                  errorWidget: (context, url, error) =>
-                      Image.asset("assets/images/Default_Image_Thumbnail.png"),
-                ),
-              );
-            },
-          );
-        } else {
-          return Text("Error!");
-        }
-      }
-    });
+    return controller.obx(
+      (state) {
+        var listImage = state!.chapterImage!;
+        return ListView.builder(
+          itemCount: listImage.length,
+          itemBuilder: (context, index) {
+            var image = listImage[index];
+            return SizedBox(
+              width: Get.width,
+              child: CachedNetworkImage(
+                placeholder: (context, url) =>
+                    Image.asset("assets/gif/ripple.gif"),
+                imageUrl: image.chapterImageLink,
+                errorWidget: (context, url, error) =>
+                    Image.asset("assets/images/Default_Image_Thumbnail.png"),
+              ),
+            );
+          },
+        );
+      },
+      onError: (error) => Text("$error!"),
+      onLoading: LoadingCard(),
+    );
   }
 }

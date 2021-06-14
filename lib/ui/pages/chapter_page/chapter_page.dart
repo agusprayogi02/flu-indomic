@@ -9,7 +9,7 @@ class ChapterPage extends GetView<ChapterController> {
     return Scaffold(
       appBar: AppBar(
           title: Obx(
-        () => Text('${ChapterController.to.title()}'),
+        () => Text('${controller.title()}'),
       )),
       body: SafeArea(
         child: Body(),

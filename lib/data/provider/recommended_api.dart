@@ -6,9 +6,6 @@ class RecommendedApi extends GetConnect {
   Future<List<MangaList>> getRecommended() async {
     var response = await HttpGetClient().getRequest('recommended');
     var list = RecommendedModel.fromJson(response.body);
-    if (response.status.hasError) {
-      throw Error.safeToString(response.statusText);
-    }
     return list.mangaList!;
   }
 }

@@ -20,14 +20,17 @@ class SubtitleText extends StatelessWidget {
             .headline6(context)
             .fontWeight(FontWeight.w500)
             .white
+            .maxLines(1)
             .ellipsis
             .make(),
         subTitle.text
             .headline6(context)
             .fontWeight(FontWeight.w700)
             .white
+            .maxLines(1)
             .ellipsis
-            .make(),
+            .make()
+            .w(context.safePercentWidth * (title == "Author" ? 70 : 50)),
       ],
     );
   }

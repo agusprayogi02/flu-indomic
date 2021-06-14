@@ -1,12 +1,11 @@
 import 'package:get/get.dart';
 import 'package:indomic/data/models/chapter_model.dart';
+import 'package:indomic/data/services/api_exception_mapper.dart';
 import 'package:indomic/data/services/repository/chapter_repository.dart';
 
-class ChapterController extends GetxController {
+class ChapterController extends GetxController with StateMixin<ChapterModel> {
   static ChapterController get to => Get.find();
 
-  final isLoading = false.obs;
-  final isError = false.obs;
   final data = Rx<ChapterModel>(ChapterModel());
   final title = "".obs;
 
@@ -17,15 +16,13 @@ class ChapterController extends GetxController {
     var args = Get.arguments;
     title(args.chapterTitle);
     try {
-      isLoading(true);
+      change(null, status: RxStatus.loading());
       var chapter = await repository.getAll(chapter: args.chapterEndpoint);
       print(chapter.chapterPages);
-      data(chapter);
-      isError(false);
-      isLoading(false);
+      change(chapter, status: RxStatus.success());
     } catch (e) {
-      isError(true);
-      isLoading(false);
+      var error = ApiExceptionMapper.toErrorMessage(e);
+      change(null, status: RxStatus.error(error));
     }
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -10,6 +11,9 @@ import 'ui/theme/app_themes.dart';
 void main() async {
   // inisialisai untuk membuat database lokal bookmark
   await GetStorage.init("bookmark");
+  // untuk orientasi potrait saja
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
   runApp(
     MyApp(),
   );
