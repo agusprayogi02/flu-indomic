@@ -1,75 +1,48 @@
 import 'package:get/get.dart';
 import 'package:indomic/data/models/thumbnail_model.dart';
+import 'package:indomic/data/services/api_exception_mapper.dart';
 import 'package:indomic/data/services/repository/thumbnail_repository.dart';
 
-class ListCategoryController extends GetxController {
+class ListCategoryController extends GetxController
+    with StateMixin<List<ThumbMangaList>> {
   static ListCategoryController get to => Get.find();
-  final isLoading = false.obs;
-  final isError = false.obs;
-  final Rx<List<ThumbMangaList>> data =
-      Rx<List<ThumbMangaList>>([ThumbMangaList()]);
+
+  final index = 0.obs;
 
   ListCategoryController({required this.repository});
   final ThumbnailRepository repository;
 
   @override
   void onInit() {
-    getAll();
+    onSwich(0);
     super.onInit();
   }
 
-  getAll() async {
+  onSwich(int? val) async {
+    var i = val ?? index();
+    index(val);
+    List<ThumbMangaList> list;
     try {
-      isLoading(true);
-      var list = await repository.getAll();
-      data(list);
-      isError(false);
-      isLoading(false);
-    } catch (e) {
-      print(e.toString());
-      isError(true);
-      isLoading(false);
-    }
-  }
+      change(null, status: RxStatus.loading());
+      switch (i) {
+        case 0:
+          list = await repository.getAll();
+          break;
+        case 1:
+          list = await repository.getManhua();
+          break;
+        case 2:
+          list = await repository.getManhwa();
+          break;
+        default:
+          list = await repository.getAll();
+          index(0);
+      }
 
-  getManhua() async {
-    try {
-      isLoading(true);
-      var list = await repository.getManhua();
-      data(list);
-      isError(false);
-      isLoading(false);
+      change(list, status: RxStatus.success());
     } catch (e) {
-      isError(true);
-      isLoading(false);
-    }
-  }
-
-  getManhwa() async {
-    try {
-      isLoading(true);
-      var list = await repository.getManhwa();
-      data(list);
-      isError(false);
-      isLoading(false);
-    } catch (e) {
-      isError(true);
-      isLoading(false);
-    }
-  }
-
-  onSwich(int val) {
-    switch (val) {
-      case 0:
-        getAll();
-        break;
-      case 1:
-        getManhua();
-        break;
-      case 2:
-        getManhwa();
-        break;
-      default:
+      var error = ApiExceptionMapper.toErrorMessage(e);
+      change(null, status: RxStatus.error(error));
     }
   }
 }

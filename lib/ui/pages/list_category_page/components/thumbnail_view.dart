@@ -24,38 +24,30 @@ class ThumbnailView extends GetView<ListCategoryController> {
       child: Column(
         children: [
           Expanded(
-            child: Obx(() {
-              if (controller.isLoading.isTrue) {
-                return LoadingCard(
-                  height: getHeight(200),
-                  width: getWidth(200),
-                );
-              } else {
-                if (controller.isError.isFalse) {
-                  var data = controller.data();
-                  return ListView.separated(
-                    separatorBuilder: (context, index) => Divider(),
-                    itemCount: data.length,
-                    itemBuilder: (context, index) => ThumbnailCard(
-                      onPress: () {
-                        Get.toNamed(Routes.DETAIL, arguments: data[index]);
-                      },
-                      btnIcon: Icons.arrow_forward_ios_rounded,
-                      title: "${data[index].title}",
-                      chapter: "${data[index].chapter}",
-                      lastUpdated: "${data[index].updatedOn}",
-                      imgSrc: "${data[index].thumb}",
-                    ),
-                  );
-                } else {
-                  return ErrorMessage(
-                    message: "Error!",
-                    onPress: () {},
-                  );
-                }
-              }
-            }),
-          ),
+              child: controller.obx(
+            (state) => ListView.separated(
+              separatorBuilder: (context, index) => Divider(),
+              itemCount: state!.length,
+              itemBuilder: (context, index) => ThumbnailCard(
+                onPress: () {
+                  Get.toNamed(Routes.DETAIL, arguments: state[index]);
+                },
+                btnIcon: Icons.arrow_forward_ios_rounded,
+                title: "${state[index].title}",
+                chapter: "${state[index].chapter}",
+                lastUpdated: "${state[index].updatedOn}",
+                imgSrc: "${state[index].thumb}",
+              ),
+            ),
+            onLoading: LoadingCard(
+              height: getHeight(200),
+              width: getWidth(200),
+            ),
+            onError: (error) => ErrorMessage(
+              message: "$error",
+              onPress: () => controller.onSwich(null),
+            ),
+          )),
         ],
       ),
     );

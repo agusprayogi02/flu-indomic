@@ -12,6 +12,7 @@ class HomeController extends GetxController with StateMixin<List<MangaList>> {
   final isThumbError = false.obs;
   final Rx<List<ThumbMangaList>> thumbnail =
       Rx<List<ThumbMangaList>>([ThumbMangaList()]);
+  final errorMessage = "".obs;
 
   HomeController({required this.thumbnailRepo, required this.recommendedRepo});
   final RecommendedRepository recommendedRepo;
@@ -35,11 +36,11 @@ class HomeController extends GetxController with StateMixin<List<MangaList>> {
       thumbnail(data);
       isThumbError(false);
       isThumbLoading(false);
-      return data;
     } catch (e) {
       isThumbError(true);
+      var error = ApiExceptionMapper.toErrorMessage(e);
+      errorMessage(error);
       isThumbLoading(false);
-      return null;
     }
   }
 

@@ -2,16 +2,16 @@ import 'package:get/get.dart';
 import 'package:indomic/controllers/storage_controller.dart';
 import 'package:indomic/data/models/bookmark_model.dart';
 import 'package:indomic/data/models/detail_model.dart';
+import 'package:indomic/data/services/api_exception_mapper.dart';
 import 'package:indomic/data/services/repository/detail_repository.dart';
 import 'package:indomic/routes/app_pages.dart';
 
-class DetailController extends GetxController {
+class DetailController extends GetxController with StateMixin<DetailModel> {
   static DetailController get to => Get.find();
-  final isLoading = false.obs;
-  final data = Rx<DetailModel>(DetailModel());
-  final isError = false.obs;
+
   final isSave = false.obs;
   final endPoint = "".obs;
+  final data = Rx<DetailModel>(DetailModel());
   final StorageController storageController = StorageController.to;
 
   final DetailRepository repository;
@@ -20,16 +20,15 @@ class DetailController extends GetxController {
   getDetailKomic() async {
     var args = Get.arguments; //ThumbMangaList or MangaList
     endPoint(args.endpoint);
-    isLoading(true);
+    change(null, status: RxStatus.loading());
     try {
       isSave(storageController.cekKey(args.endpoint));
       var list = await repository.getAll(endPoint: args.endpoint);
       data(list);
-      isError(false);
-      isLoading(false);
+      change(list, status: RxStatus.success());
     } catch (e) {
-      isError(true);
-      isLoading(false);
+      var error = ApiExceptionMapper.toErrorMessage(e);
+      change(null, status: RxStatus.error(error));
     }
   }
 
@@ -70,11 +69,5 @@ class DetailController extends GetxController {
   void onInit() {
     getDetailKomic();
     super.onInit();
-  }
-
-  @override
-  void onClose() {
-    // TODO: implement onClose
-    super.onClose();
   }
 }

@@ -16,35 +16,29 @@ class Body extends GetView<SearchController> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(defaultMargin),
-      child: Obx(() {
-        if (controller.isLoading.isTrue) {
-          return LoadingCard();
-        } else {
-          if (controller.isError.isFalse) {
-            return ListView.separated(
-              itemBuilder: (context, index) {
-                var item = controller.data()[index];
-                return ThumbnailCard(
-                  onPress: () => Get.toNamed(Routes.DETAIL, arguments: item),
-                  btnIcon: Icons.arrow_forward_ios_rounded,
-                  title: item.title,
-                  lastUpdated: "${item.updatedOn}",
-                  imgSrc: item.thumb,
-                  isMangaType: true,
-                  type: item.type.toString(),
-                );
-              },
-              separatorBuilder: (context, index) => Divider(),
-              itemCount: controller.data().length,
+      child: controller.obx(
+        (data) => ListView.separated(
+          itemBuilder: (context, index) {
+            var item = data![index];
+            return ThumbnailCard(
+              onPress: () => Get.toNamed(Routes.DETAIL, arguments: item),
+              btnIcon: Icons.arrow_forward_ios_rounded,
+              title: item.title,
+              lastUpdated: "${item.updatedOn}",
+              imgSrc: item.thumb,
+              isMangaType: true,
+              type: item.type.toString(),
             );
-          } else {
-            return ErrorMessage(
-              message: "Error",
-              onPress: () => controller.getSearch(),
-            );
-          }
-        }
-      }),
+          },
+          separatorBuilder: (context, index) => Divider(),
+          itemCount: data!.length,
+        ),
+        onError: (error) => ErrorMessage(
+          message: "$error",
+          onPress: () => controller.getSearch(),
+        ),
+        onLoading: LoadingCard(),
+      ),
     );
   }
 }

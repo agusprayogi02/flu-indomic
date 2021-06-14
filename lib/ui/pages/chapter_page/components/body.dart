@@ -31,7 +31,7 @@ class Body extends GetView<ChapterController> {
         );
       },
       onError: (error) => ErrorMessage(
-        message: error!,
+        message: "$error",
         onPress: () => controller.getChapter(),
       ),
       onLoading: LoadingCard(),
