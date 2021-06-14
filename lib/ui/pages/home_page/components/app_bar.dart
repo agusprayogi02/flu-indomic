@@ -33,7 +33,7 @@ AppBar buildAppBar() {
       CircleButton(
         onPress: () {},
         isLeft: false,
-        tooltip: "Book Mark",
+        tooltip: "Change Language",
         icon: Icons.language_rounded,
         marginVertical: defaultMargin * 1.2,
       ),

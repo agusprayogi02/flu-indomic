@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:indomic/controllers/detail_controller.dart';
+import 'package:indomic/ui/components/error_message.dart';
 import 'package:indomic/ui/components/icon_rounded.dart';
 import 'package:indomic/ui/components/loading_card.dart';
 import 'package:indomic/ui/components/rounded_button.dart';
@@ -164,13 +165,10 @@ class Body extends GetView<DetailController> {
             ],
           );
         } else {
-          return "Internet Error !\nTap to Refresh"
-              .text
-              .headline4(context)
-              .makeCentered()
-              .onTap(
-                () => to.getDetailKomic(),
-              );
+          return ErrorMessage(
+            message: "error",
+            onPress: () => to.getDetailKomic(),
+          );
         }
       }
     });

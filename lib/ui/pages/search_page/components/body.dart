@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:indomic/controllers/search_controller.dart';
 import 'package:indomic/routes/app_pages.dart';
+import 'package:indomic/ui/components/error_message.dart';
 import 'package:indomic/ui/components/loading_card.dart';
 import 'package:indomic/ui/components/thumbnail_card.dart';
 import 'package:indomic/ui/utils/utils.dart';
@@ -24,9 +25,7 @@ class Body extends GetView<SearchController> {
               itemBuilder: (context, index) {
                 var item = controller.data()[index];
                 return ThumbnailCard(
-                  onPress: () {
-                    Get.toNamed(Routes.DETAIL, arguments: item);
-                  },
+                  onPress: () => Get.toNamed(Routes.DETAIL, arguments: item),
                   btnIcon: Icons.arrow_forward_ios_rounded,
                   title: item.title,
                   lastUpdated: "${item.updatedOn}",
@@ -39,7 +38,10 @@ class Body extends GetView<SearchController> {
               itemCount: controller.data().length,
             );
           } else {
-            return Text("Error");
+            return ErrorMessage(
+              message: "Error",
+              onPress: () => controller.getSearch(),
+            );
           }
         }
       }),

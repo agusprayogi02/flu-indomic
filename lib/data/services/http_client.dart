@@ -23,9 +23,11 @@ class HttpGetClient extends GetConnect {
       } else if (response.hasError) {
         throw ConnectionException();
       } else {
-        throw UnknownException();
+        throw ConnectionException();
       }
     } on SocketException {
+      throw ConnectionException();
+    } catch (e) {
       throw ConnectionException();
     }
   }

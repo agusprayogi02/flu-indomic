@@ -1,17 +1,15 @@
 import 'package:get/get.dart';
 import 'package:indomic/data/models/recommended_model.dart';
 import 'package:indomic/data/models/thumbnail_model.dart';
+import 'package:indomic/data/services/api_exception_mapper.dart';
 import 'package:indomic/data/services/repository/recommended_repository.dart';
 import 'package:indomic/data/services/repository/thumbnail_repository.dart';
 
-class HomeController extends GetxController {
+class HomeController extends GetxController with StateMixin<List<MangaList>> {
   static HomeController get to => Get.find();
 
   final isThumbLoading = true.obs;
-  final isRecommendLoading = true.obs;
   final isThumbError = false.obs;
-  final isRecommendError = false.obs;
-  final Rx<List<MangaList>> recommended = Rx<List<MangaList>>([MangaList()]);
   final Rx<List<ThumbMangaList>> thumbnail =
       Rx<List<ThumbMangaList>>([ThumbMangaList()]);
 
@@ -20,17 +18,13 @@ class HomeController extends GetxController {
   final ThumbnailRepository thumbnailRepo;
 
   getRecommended() async {
-    isRecommendLoading(true);
+    change(null, status: RxStatus.loading());
     try {
       var list = await recommendedRepo.getAll();
-      recommended(list);
-      isRecommendError(false);
-      isRecommendLoading(false);
-      return list;
+      change(list, status: RxStatus.success());
     } catch (e) {
-      isRecommendError(true);
-      isRecommendLoading(false);
-      return null;
+      var error = ApiExceptionMapper.toErrorMessage(e);
+      change(null, status: RxStatus.error(error));
     }
   }
 
@@ -51,7 +45,6 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     getRecommended();
     getLastUpdated();
     super.onInit();

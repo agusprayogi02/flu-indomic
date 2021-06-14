@@ -6,7 +6,6 @@ import 'package:indomic/data/services/repository/chapter_repository.dart';
 class ChapterController extends GetxController with StateMixin<ChapterModel> {
   static ChapterController get to => Get.find();
 
-  final data = Rx<ChapterModel>(ChapterModel());
   final title = "".obs;
 
   final ChapterRepository repository;

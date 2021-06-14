@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:indomic/controllers/list_category_controller.dart';
 import 'package:indomic/routes/app_pages.dart';
+import 'package:indomic/ui/components/error_message.dart';
 import 'package:indomic/ui/components/loading_card.dart';
 import 'package:indomic/ui/components/thumbnail_card.dart';
 import 'package:indomic/ui/utils/config_size.dart';
@@ -47,7 +48,10 @@ class ThumbnailView extends GetView<ListCategoryController> {
                     ),
                   );
                 } else {
-                  return Text("Error!");
+                  return ErrorMessage(
+                    message: "Error!",
+                    onPress: () {},
+                  );
                 }
               }
             }),

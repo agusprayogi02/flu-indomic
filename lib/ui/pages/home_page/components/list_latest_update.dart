@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:indomic/controllers/home_controller.dart';
 import 'package:indomic/routes/app_pages.dart';
+import 'package:indomic/ui/components/error_message.dart';
 import 'package:indomic/ui/utils/utils.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 import '../../../components/thumbnail_card.dart';
 
@@ -34,7 +34,10 @@ Expanded buildLatestUpdate(BuildContext context) {
               ),
             ).marginSymmetric(horizontal: defaultMargin * 1.5);
           }
-          return "Internet Error.".text.headline3(context).makeCentered();
+          return ErrorMessage(
+            message: "Internet Error.",
+            onPress: () => to.getLastUpdated(),
+          );
         }
       },
     ),

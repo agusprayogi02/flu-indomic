@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:indomic/controllers/bookmark_controller.dart';
 import 'package:indomic/ui/components/circle_button.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -11,7 +12,7 @@ AppBar buildAppBar(BuildContext context) {
     actions: [
       CircleButton(
         icon: Icons.replay_rounded,
-        onPress: () {},
+        onPress: () => BookmarkController.to.getBookmarks,
         isLeft: false,
         marginVertical: defaultMargin * 1.5,
         iconSize: 20,
