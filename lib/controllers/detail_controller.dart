@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:indomic/controllers/storage_controller.dart';
 import 'package:indomic/data/models/bookmark_model.dart';
@@ -37,6 +38,11 @@ class DetailController extends GetxController with StateMixin<DetailModel> {
     if (isSave()) {
       storageController.removeBookmark(endPoint());
       isSave(false);
+      Get.snackbar(
+        'Success',
+        'Removed to Bookmark!',
+        colorText: Colors.red,
+      );
     } else {
       BookmarkModel book = BookmarkModel();
       var chapters = data().chapter!;

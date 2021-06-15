@@ -16,7 +16,7 @@ Column buildListRecommended(BuildContext context) {
       SelectionTitle(
         title: "Recommended",
         isButton: false,
-      ),
+      ).marginOnly(top: defaultMargin, bottom: defaultMargin / 4),
       Container(
         width: context.width,
         height: getHeight(120),
@@ -24,6 +24,7 @@ Column buildListRecommended(BuildContext context) {
           left: defaultMargin * 1.5,
           right: defaultMargin * 1.5,
           top: defaultMargin * 1.5,
+          bottom: defaultMargin / 2,
         ),
         child: HomeController.to.obx(
           (state) => ListView.builder(

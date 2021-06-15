@@ -7,6 +7,7 @@ import 'package:indomic/ui/components/thumbnail_card.dart';
 import 'package:indomic/ui/utils/config_size.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:get/get.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class ThumbnailView extends GetView<ListCategoryController> {
   const ThumbnailView({
@@ -24,30 +25,46 @@ class ThumbnailView extends GetView<ListCategoryController> {
       child: Column(
         children: [
           Expanded(
-              child: controller.obx(
-            (state) => ListView.separated(
-              separatorBuilder: (context, index) => Divider(),
-              itemCount: state!.length,
-              itemBuilder: (context, index) => ThumbnailCard(
-                onPress: () {
-                  Get.toNamed(Routes.DETAIL, arguments: state[index]);
-                },
-                btnIcon: Icons.arrow_forward_ios_rounded,
-                title: "${state[index].title}",
-                chapter: "${state[index].chapter}",
-                lastUpdated: "${state[index].updatedOn}",
-                imgSrc: "${state[index].thumb}",
+            child: controller.obx(
+              (state) => ListView.separated(
+                controller: controller.scollController,
+                separatorBuilder: (context, index) => Divider(),
+                itemCount: state!.length,
+                itemBuilder: (context, index) => ThumbnailCard(
+                  onPress: () {
+                    Get.toNamed(Routes.DETAIL, arguments: state[index]);
+                  },
+                  btnIcon: Icons.arrow_forward_ios_rounded,
+                  title: "${state[index].title}",
+                  chapter: "${state[index].chapter}",
+                  lastUpdated: "${state[index].updatedOn}",
+                  imgSrc: "${state[index].thumb}",
+                ),
+              ),
+              onLoading: LoadingCard(
+                height: getHeight(200),
+                width: getWidth(200),
+              ),
+              onError: (error) => ErrorMessage(
+                message: "$error",
+                onPress: () => controller.onSwich(null),
               ),
             ),
-            onLoading: LoadingCard(
-              height: getHeight(200),
-              width: getWidth(200),
-            ),
-            onError: (error) => ErrorMessage(
-              message: "$error",
-              onPress: () => controller.onSwich(null),
-            ),
-          )),
+          ),
+          Obx(() {
+            if (controller.isMoreLoading.isTrue)
+              return SizedBox(
+                height: getHeight(40),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset("assets/gif/spinner.gif"),
+                    "Loading...".text.headline4(context).make(),
+                  ],
+                ),
+              );
+            return SizedBox();
+          }),
         ],
       ),
     );

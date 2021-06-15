@@ -122,12 +122,14 @@ class Body extends GetView<DetailController> {
                         );
                       },
                     ),
-                    RoundedButton(
-                      title: controller.isSave.isFalse
-                          ? "Start Reading"
-                          : "Continue Reading",
-                      icon: Icons.menu_book_rounded,
-                      onPress: () => controller.startReading(),
+                    Obx(
+                      () => RoundedButton(
+                        title: controller.isSave.isFalse
+                            ? "Start Reading"
+                            : "Continue Reading",
+                        icon: Icons.menu_book_rounded,
+                        onPress: () => controller.startReading(),
+                      ),
                     ),
                   ],
                 ),
@@ -144,14 +146,16 @@ class Body extends GetView<DetailController> {
               },
             ),
           ),
-          Positioned(
-            top: 10,
-            right: 10,
-            child: IconRounded(
-              icon: controller.isSave()
-                  ? Icons.bookmark_added_rounded
-                  : Icons.bookmark_add_rounded,
-              onPress: () => controller.saveBookmark(),
+          Obx(
+            () => Positioned(
+              top: 10,
+              right: 10,
+              child: IconRounded(
+                icon: controller.isSave()
+                    ? Icons.bookmark_added_rounded
+                    : Icons.bookmark_add_rounded,
+                onPress: () => controller.saveBookmark(),
+              ),
             ),
           ),
         ],
