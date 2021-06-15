@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:indomic/data/models/chapter_model.dart';
 import 'package:indomic/data/services/api_exception_mapper.dart';
@@ -7,6 +8,7 @@ class ChapterController extends GetxController with StateMixin<ChapterModel> {
   static ChapterController get to => Get.find();
 
   final title = "".obs;
+  final ScrollController scrollController = ScrollController();
 
   final ChapterRepository repository;
   ChapterController({required this.repository});
@@ -28,6 +30,12 @@ class ChapterController extends GetxController with StateMixin<ChapterModel> {
   @override
   void onInit() {
     getChapter();
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        print(scrollController.position.pixels);
+      }
+    });
     super.onInit();
   }
 }

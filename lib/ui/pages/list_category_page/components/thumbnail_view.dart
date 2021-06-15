@@ -3,11 +3,11 @@ import 'package:indomic/controllers/list_category_controller.dart';
 import 'package:indomic/routes/app_pages.dart';
 import 'package:indomic/ui/components/error_message.dart';
 import 'package:indomic/ui/components/loading_card.dart';
+import 'package:indomic/ui/components/loading_more_card.dart';
 import 'package:indomic/ui/components/thumbnail_card.dart';
 import 'package:indomic/ui/utils/config_size.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:get/get.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class ThumbnailView extends GetView<ListCategoryController> {
   const ThumbnailView({
@@ -52,17 +52,9 @@ class ThumbnailView extends GetView<ListCategoryController> {
             ),
           ),
           Obx(() {
-            if (controller.isMoreLoading.isTrue)
-              return SizedBox(
-                height: getHeight(40),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset("assets/gif/spinner.gif"),
-                    "Loading...".text.headline4(context).make(),
-                  ],
-                ),
-              );
+            if (controller.isMoreLoading.isTrue) {
+              return LoadingMoreCard();
+            }
             return SizedBox();
           }),
         ],

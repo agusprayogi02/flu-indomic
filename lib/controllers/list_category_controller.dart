@@ -49,6 +49,7 @@ class ListCategoryController extends GetxController
         default:
           list = await repository.getAll(index: i);
       }
+      scollIndex(i);
       data().addAll(list);
     } catch (e) {
       var error = ApiExceptionMapper.toErrorMessage(e);

@@ -15,6 +15,7 @@ class Body extends GetView<ChapterController> {
         var listImage = state!.chapterImage!;
         return ListView.builder(
           itemCount: listImage.length,
+          controller: controller.scrollController,
           itemBuilder: (context, index) {
             var image = listImage[index];
             return SizedBox(
