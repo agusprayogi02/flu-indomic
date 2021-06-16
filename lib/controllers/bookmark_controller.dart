@@ -5,17 +5,24 @@ import 'package:indomic/routes/app_pages.dart';
 class BookmarkController extends GetxController {
   static BookmarkController get to => Get.find();
 
-  StorageController storageController = StorageController.to;
+  final storageController = StorageController.to;
+  final bookmarks = <String>[].obs;
 
-  Rx<Iterable<String>> get getBookmarks => storageController.readAll.obs;
+  Iterable<String> get getBookmarks => StorageController.to.readAll;
 
-  delete(String key) => storageController.removeBookmark(key);
+  delete(String key) {
+    storageController.removeBookmark(key);
+    onRefresh();
+  }
+
+  onRefresh() => bookmarks(storageController.readAll.toList());
 
   toDetails(args) => Get.toNamed(Routes.DETAIL, arguments: args);
 
   @override
   void onInit() {
-    getBookmarks();
+    getBookmarks;
+    onRefresh();
     super.onInit();
   }
 }

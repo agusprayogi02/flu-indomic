@@ -31,9 +31,3 @@ BorderRadius borderRadiusOnly({
       bottomLeft: defaultRadius(radius: bLeft),
       bottomRight: defaultRadius(radius: bRight),
     );
-
-// untuk menghapus karakter slash dan mengambil string pertama
-String splitSlash(String val) {
-  var listString = val.split('/');
-  return listString[0];
-}

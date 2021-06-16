@@ -1,10 +1,9 @@
-import 'package:get/get_connect/connect.dart';
 import 'package:indomic/data/models/recommended_model.dart';
 import 'package:indomic/data/services/http_client.dart';
 
-class RecommendedApi extends GetConnect {
+class RecommendedApi extends HttpGetClient {
   Future<List<MangaList>> getRecommended() async {
-    var response = await HttpGetClient().getRequest('recommended');
+    var response = await getRequest('recommended');
     var list = RecommendedModel.fromJson(response.body);
     return list.mangaList!;
   }

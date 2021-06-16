@@ -12,6 +12,7 @@ class CircleButton extends StatelessWidget {
     this.color,
     this.marginVertical,
     this.iconSize,
+    this.disabled = false,
   }) : super(key: key);
 
   final IconData icon;
@@ -21,32 +22,36 @@ class CircleButton extends StatelessWidget {
   final Color? color;
   final double? marginVertical;
   final double? iconSize;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      height: 35,
-      width: 35,
-      decoration: BoxDecoration(
-        borderRadius: borderRadiusAll(),
-        color: greyC,
-        border: Border.all(
-          color: color ?? greyC,
-          width: 0.5,
+    return AbsorbPointer(
+      absorbing: disabled,
+      child: Container(
+        alignment: Alignment.center,
+        height: 35,
+        width: 35,
+        decoration: BoxDecoration(
+          borderRadius: borderRadiusAll(),
+          color: disabled ? greyDarkC : greyC,
+          border: Border.all(
+            color: color ?? greyC,
+            width: 0.5,
+          ),
         ),
-      ),
-      margin: EdgeInsets.only(
-        right: isLeft ? 0 : defaultMargin * 1.4,
-        left: isLeft ? defaultMargin * 1.4 : 0,
-        top: marginVertical ?? (defaultMargin * 1.3),
-        bottom: marginVertical ?? (defaultMargin * 0.5),
-      ),
-      child: Icon(
-        icon,
-        color: color ?? primaryC,
-        size: iconSize ?? 24,
-      ),
-    ).onInkTap(onPress).tooltip("$tooltip");
+        margin: EdgeInsets.only(
+          right: isLeft ? 0 : defaultMargin * 1.4,
+          left: isLeft ? defaultMargin * 1.4 : 0,
+          top: marginVertical ?? (defaultMargin * 1.3),
+          bottom: marginVertical ?? (defaultMargin * 0.5),
+        ),
+        child: Icon(
+          icon,
+          color: color ?? primaryC,
+          size: iconSize ?? 24,
+        ),
+      ).onInkTap(onPress).tooltip("$tooltip"),
+    );
   }
 }

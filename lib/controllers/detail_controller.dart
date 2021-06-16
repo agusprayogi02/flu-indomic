@@ -6,6 +6,7 @@ import 'package:indomic/data/models/detail_model.dart';
 import 'package:indomic/data/services/api_exception_mapper.dart';
 import 'package:indomic/data/services/repository/detail_repository.dart';
 import 'package:indomic/routes/app_pages.dart';
+import 'package:indomic/ui/utils/helper.dart';
 
 class DetailController extends GetxController with StateMixin<DetailModel> {
   static DetailController get to => Get.find();
@@ -14,6 +15,7 @@ class DetailController extends GetxController with StateMixin<DetailModel> {
   final endPoint = "".obs;
   final data = Rx<DetailModel>(DetailModel());
   final StorageController storageController = StorageController.to;
+  final chapters = <Chapter>[].obs;
 
   final DetailRepository repository;
   DetailController({required this.repository});
@@ -26,6 +28,7 @@ class DetailController extends GetxController with StateMixin<DetailModel> {
       isSave(storageController.cekKey(args.endpoint));
       var list = await repository.getAll(endPoint: args.endpoint);
       data(list);
+      chapters(list.chapter);
       change(list, status: RxStatus.success());
     } catch (e) {
       var error = ApiExceptionMapper.toErrorMessage(e);
@@ -34,7 +37,6 @@ class DetailController extends GetxController with StateMixin<DetailModel> {
   }
 
   saveBookmark() {
-    var args = Get.arguments;
     if (isSave()) {
       storageController.removeBookmark(endPoint());
       isSave(false);
@@ -44,30 +46,37 @@ class DetailController extends GetxController with StateMixin<DetailModel> {
         colorText: Colors.red,
       );
     } else {
-      BookmarkModel book = BookmarkModel();
-      var chapters = data().chapter!;
-      book.index = 1;
-      book.title = data().title;
-      book.endpoint = data().mangaEndpoint;
-      book.thumb = args.thumb;
-      book.totalChapter = chapters.length;
-      // print(endPoint());
-      storageController.writeBookmark(endPoint(), book);
-      print(storageController.readAll);
-      isSave(true);
-      Get.snackbar('Success', 'Added to Bookmark!');
+      setBookmark();
     }
+  }
+
+  setBookmark() {
+    var args = Get.arguments;
+    BookmarkModel book = BookmarkModel();
+    book.index = 1;
+    book.title = data().title;
+    book.endpoint = data().mangaEndpoint;
+    book.thumb = args.thumb;
+    book.chapter = Helper.splitChapter(chapters.last.chapterTitle);
+    book.totalChapter = chapters.length;
+    // print(endPoint());
+    storageController.writeBookmark(endPoint(), book);
+    print(storageController.readAll);
+    isSave(true);
+    Get.snackbar('Success', 'Added to Bookmark!');
   }
 
   startReading() {
     var key = endPoint();
-    int index = 1, total = data().chapter!.length;
+    int index = 1, total = chapters.length;
     if (isSave()) {
       var save = storageController.readBookmark(key);
       storageController.updateTotal(key, val: total);
       index = save.index;
+    } else {
+      setBookmark();
     }
-    var chapter = data().chapter![total - index];
+    var chapter = chapters[total - index];
     Get.toNamed(Routes.CHAPTER, arguments: chapter);
   }
 

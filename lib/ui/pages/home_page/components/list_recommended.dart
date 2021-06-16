@@ -42,7 +42,10 @@ Column buildListRecommended(BuildContext context) {
               },
             ).marginOnly(right: defaultMargin),
           ),
-          onLoading: LoadingCard(),
+          onLoading: LoadingCard(
+            text: false,
+            image: 2,
+          ),
           onError: (error) => ErrorMessage(
             message: "$error",
             onPress: () => HomeController.to.getRecommended(),

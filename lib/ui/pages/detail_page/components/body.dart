@@ -122,6 +122,10 @@ class Body extends GetView<DetailController> {
                         );
                       },
                     ),
+                    SizedBox(
+                      width: getWidth(3),
+                      height: double.infinity,
+                    ).backgroundColor(primaryC),
                     Obx(
                       () => RoundedButton(
                         title: controller.isSave.isFalse
@@ -140,7 +144,7 @@ class Body extends GetView<DetailController> {
             top: 10,
             left: 10,
             child: IconRounded(
-              icon: Icons.arrow_back,
+              icon: Icons.arrow_back_ios_new_rounded,
               onPress: () {
                 Get.back();
               },

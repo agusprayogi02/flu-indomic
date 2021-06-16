@@ -16,28 +16,31 @@ class Body extends GetView<BookmarkController> {
         horizontal: defaultMargin * 1.5,
         vertical: defaultMargin,
       ),
-      child: Obx(() {
-        var bookmarks = controller.getBookmarks();
-        // print(bookmarks);
-        return ListView.separated(
-          separatorBuilder: (context, index) => Divider(),
-          itemCount: bookmarks.length,
-          itemBuilder: (context, index) {
-            var item = controller.storageController
-                .readBookmark(bookmarks.elementAt(index));
-            return ThumbnailCard(
-              onPress: () => controller.toDetails(item),
-              title: item.title,
-              lastUpdated: "",
-              imgSrc: item.thumb,
-              btnIcon: Icons.delete_forever_rounded,
-              chapter: "Last Read Chapter ${item.index}",
-              btnPress: () => controller.delete(item.endpoint),
-              btnColor: Colors.red,
-            );
-          },
-        );
-      }),
+      child: ObxValue(
+        (RxList<String> data) {
+          var bookmarks = data();
+          return ListView.separated(
+            separatorBuilder: (context, index) => Divider(),
+            itemCount: bookmarks.length,
+            itemBuilder: (_, index) {
+              var item = controller.storageController
+                  .readBookmark(bookmarks.elementAt(index));
+              print(index);
+              return ThumbnailCard(
+                onPress: () => controller.toDetails(item),
+                title: item.title,
+                lastUpdated: "",
+                imgSrc: item.thumb,
+                btnIcon: Icons.delete_forever_rounded,
+                chapter: "Last Read Chapter ${item.index}",
+                btnPress: () => controller.delete(item.endpoint),
+                btnColor: Colors.red,
+              );
+            },
+          );
+        },
+        controller.bookmarks,
+      ),
     );
   }
 }

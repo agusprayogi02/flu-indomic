@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:indomic/data/services/api_exception.dart';
 import 'package:indomic/ui/utils/utils.dart';
 
-class HttpGetClient extends GetConnect {
+abstract class HttpGetClient extends GetConnect {
   Future<Response> getRequest(String path) async {
     Response response;
     try {

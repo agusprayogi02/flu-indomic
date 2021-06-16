@@ -12,7 +12,7 @@ AppBar buildAppBar(BuildContext context) {
     actions: [
       CircleButton(
         icon: Icons.replay_rounded,
-        onPress: () => BookmarkController.to.getBookmarks,
+        onPress: () => BookmarkController.to.onRefresh(),
         isLeft: false,
         marginVertical: defaultMargin * 1.5,
         iconSize: 20,
