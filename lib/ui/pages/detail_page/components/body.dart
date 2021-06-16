@@ -7,6 +7,7 @@ import 'package:indomic/ui/components/icon_rounded.dart';
 import 'package:indomic/ui/components/loading_card.dart';
 import 'package:indomic/ui/components/rounded_button.dart';
 import 'package:indomic/ui/utils/config_size.dart';
+import 'package:indomic/ui/utils/helper.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -31,7 +32,7 @@ class Body extends GetView<DetailController> {
                 text: false,
                 image: 0,
               ),
-              imageUrl: data!.thumb,
+              imageUrl: Helper.splitUrlImg(data!.thumb),
               fit: BoxFit.cover,
               errorWidget: (context, url, error) =>
                   Image.asset("assets/images/Default_Image_Thumbnail.png"),
@@ -41,7 +42,7 @@ class Body extends GetView<DetailController> {
             children: [
               Spacer(),
               Container(
-                height: context.safePercentHeight * 60,
+                height: context.safePercentHeight * 58,
                 width: Get.width,
                 alignment: Alignment.topLeft,
                 decoration: BoxDecoration(

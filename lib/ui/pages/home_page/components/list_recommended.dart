@@ -34,12 +34,10 @@ Column buildListRecommended(BuildContext context) {
             itemBuilder: (context, index) => RecommendedCard(
               title: "${state[index].title}",
               imgSrc: state[index].thumb,
-              onTap: () {
-                Get.toNamed(
-                  Routes.DETAIL,
-                  arguments: state[index],
-                );
-              },
+              onTap: () => Get.toNamed(
+                Routes.DETAIL,
+                arguments: state[index],
+              ),
             ).marginOnly(right: defaultMargin),
           ),
           onLoading: LoadingCard(

@@ -16,17 +16,26 @@ class DetailController extends GetxController with StateMixin<DetailModel> {
   final data = Rx<DetailModel>(DetailModel());
   final StorageController storageController = StorageController.to;
   final chapters = <Chapter>[].obs;
+  final thumb = "".obs;
 
   final DetailRepository repository;
   DetailController({required this.repository});
 
+  getByChapter(Chapter chapter) {
+    Get.back();
+    var index = chapters.indexOf(chapter);
+    setBookmark(index, chapters[index].chapterTitle);
+    Get.toNamed(Routes.CHAPTER, arguments: chapter);
+  }
+
   getDetailKomic() async {
-    var args = Get.arguments; //ThumbMangaList or MangaList
-    endPoint(args.endpoint);
+    var val = Get.arguments; //ThumbMangaList or MangaList
+    thumb(val.thumb);
+    endPoint(val.endpoint);
     change(null, status: RxStatus.loading());
     try {
-      isSave(storageController.cekKey(args.endpoint));
-      var list = await repository.getAll(endPoint: args.endpoint);
+      isSave(storageController.cekKey(endPoint()));
+      var list = await repository.getAll(endPoint: endPoint());
       data(list);
       chapters(list.chapter);
       change(list, status: RxStatus.success());
@@ -46,18 +55,17 @@ class DetailController extends GetxController with StateMixin<DetailModel> {
         colorText: Colors.red,
       );
     } else {
-      setBookmark();
+      setBookmark(1, chapters.last.chapterTitle);
     }
   }
 
-  setBookmark() {
-    var args = Get.arguments;
+  setBookmark(int index, String chapterTitle) {
     BookmarkModel book = BookmarkModel();
-    book.index = 1;
+    book.index = index;
     book.title = data().title;
     book.endpoint = data().mangaEndpoint;
-    book.thumb = args.thumb;
-    book.chapter = Helper.splitChapter(chapters.last.chapterTitle);
+    book.thumb = thumb.value;
+    book.chapter = Helper.splitChapter(chapterTitle);
     book.totalChapter = chapters.length;
     // print(endPoint());
     storageController.writeBookmark(endPoint(), book);
@@ -74,7 +82,7 @@ class DetailController extends GetxController with StateMixin<DetailModel> {
       storageController.updateTotal(key, val: total);
       index = save.index;
     } else {
-      setBookmark();
+      setBookmark(index, chapters.last.chapterTitle);
     }
     var chapter = chapters[total - index];
     Get.toNamed(Routes.CHAPTER, arguments: chapter);
