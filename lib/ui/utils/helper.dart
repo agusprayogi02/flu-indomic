@@ -2,7 +2,7 @@ class Helper {
   // untuk menghapus karakter slash dan mengambil string pertama
   static String splitSlash(String val) {
     var listString = val.split('/');
-    return listString[0];
+    return listString.first;
   }
 
 // untuk mencari chapter keberapa yang sedang dituju

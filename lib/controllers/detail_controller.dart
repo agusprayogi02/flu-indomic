@@ -24,6 +24,7 @@ class DetailController extends GetxController with StateMixin<DetailModel> {
   getByChapter(Chapter chapter) {
     Get.back();
     var index = chapters.indexOf(chapter);
+    // print(chapters[index].chapterEndpoint);
     setBookmark(index, chapters[index].chapterTitle);
     Get.toNamed(Routes.CHAPTER, arguments: chapter);
   }
@@ -63,7 +64,7 @@ class DetailController extends GetxController with StateMixin<DetailModel> {
     BookmarkModel book = BookmarkModel();
     book.index = index;
     book.title = data().title;
-    book.endpoint = data().mangaEndpoint;
+    book.endpoint = endPoint();
     book.thumb = thumb.value;
     book.chapter = Helper.splitChapter(chapterTitle);
     book.totalChapter = chapters.length;

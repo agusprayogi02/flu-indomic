@@ -14,6 +14,7 @@ dependencies:
   cached_network_image: ^3.0.0
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
+  flutter_svg: ^0.22.0
   get: ^4.1.4
   get_storage: ^2.0.2
   google_nav_bar: ^5.0.5
@@ -22,6 +23,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.9.0
+
+flutter_icons:
+  android: 'launcher_icon'
+  ios: true
+  image_path: 'assets/icons/icons.png'
 
 flutter:
   uses-material-design: true
@@ -29,6 +36,7 @@ flutter:
   assets:
     - assets/gif/
     - assets/images/
+    - assets/icons/
 
   fonts:
     - family: Righteous

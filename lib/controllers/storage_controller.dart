@@ -37,7 +37,7 @@ class StorageController extends GetxController {
       BookmarkModel bookmark = bookmarkModelFromJson(read);
       bookmark.chapter = Helper.splitChapter(chapterTitle);
       bookmark.index = index;
-      this.writeBookmark(extactKey, bookmark);
+      this.writeBookmark(key, bookmark);
     }
   }
 

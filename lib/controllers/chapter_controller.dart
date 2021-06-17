@@ -30,6 +30,11 @@ class ChapterController extends GetxController with StateMixin<ChapterModel> {
         total = detailController.chapters.length;
     this.checkCondition(total - index, total);
     this.getApiChapter(args.chapterEndpoint);
+    storage.updateChapter(
+      detailController.endPoint(),
+      index,
+      detailController.chapters[index].chapterTitle,
+    );
   }
 
   getApiChapter(String endPoint) async {
@@ -45,23 +50,25 @@ class ChapterController extends GetxController with StateMixin<ChapterModel> {
   }
 
   getNextChapter() {
-    var chapters = detailController.chapters(),
+    var chapters = detailController.chapters,
         item = storage.readBookmark(detailController.endPoint());
-    var index = item.index + 1, total = item.totalChapter;
-    if (index <= total) {
-      var current = chapters[total - index];
-      getApiChapter(current.chapterEndpoint);
-      checkCondition(index, total);
-      storage.updateChapter(
-        detailController.endPoint(),
-        index,
-        current.chapterTitle,
-      );
+    if (item.index <= item.totalChapter) {
+      var index = item.index + 1, total = item.totalChapter;
+      if (index <= total) {
+        var current = chapters[total - index];
+        getApiChapter(current.chapterEndpoint);
+        checkCondition(index, total);
+        storage.updateChapter(
+          detailController.endPoint(),
+          index,
+          current.chapterTitle,
+        );
+      }
     }
   }
 
   getPreviousChapter() {
-    var chapters = detailController.chapters(),
+    var chapters = detailController.chapters,
         item = storage.readBookmark(detailController.endPoint());
     var index = item.index - 1, total = item.totalChapter;
     if (index >= 1) {
@@ -80,7 +87,7 @@ class ChapterController extends GetxController with StateMixin<ChapterModel> {
     if (index == 1) {
       isMin(true);
     } else if (index == total) {
-      isMin(true);
+      isMax(true);
     } else {
       isMin(false);
       isMax(false);

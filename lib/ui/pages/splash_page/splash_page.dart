@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:indomic/ui/components/loading_card.dart';
+import 'package:indomic/ui/utils/utils.dart';
 import '../../../controllers/splash_controller.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class SplashPage extends GetView<SplashController> {
   @override
@@ -15,13 +16,15 @@ class SplashPage extends GetView<SplashController> {
           children: [
             LoadingCard(),
             Positioned(
-              bottom: 0,
-              child: "Indomic"
-                  .text
-                  .headline2(context)
-                  .fontFamily('Poppins')
-                  .makeCentered()
-                  .marginOnly(bottom: 20),
+              bottom: 10,
+              child: Container(
+                padding: EdgeInsets.all(defaultPadding * 1.5),
+                decoration: BoxDecoration(
+                  color: lightPrimaryC,
+                  borderRadius: borderRadiusAll(),
+                ),
+                child: SvgPicture.asset("assets/icons/IndoMic.svg"),
+              ),
             )
           ],
         ),
