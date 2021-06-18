@@ -116,6 +116,7 @@ class Body extends GetView<DetailController> {
                     RoundedButton(
                       title: "List Chapter",
                       icon: Icons.list_alt,
+                      height: double.infinity,
                       onPress: () {
                         Get.bottomSheet(
                           ListChapter(data: data),
@@ -133,6 +134,7 @@ class Body extends GetView<DetailController> {
                             ? "Start Reading"
                             : "Continue Reading",
                         icon: Icons.menu_book_rounded,
+                        height: double.infinity,
                         onPress: () => controller.startReading(),
                       ),
                     ),

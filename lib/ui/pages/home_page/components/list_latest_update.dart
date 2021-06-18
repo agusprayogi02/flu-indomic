@@ -24,7 +24,8 @@ Expanded buildLatestUpdate(BuildContext context) {
               separatorBuilder: (context, index) => Divider(),
               itemBuilder: (context, index) => ThumbnailCard(
                 title: "${list[index].title}",
-                chapter: "${list[index].chapter}",
+                type: "${list[index].chapter}",
+                isMangaType: true,
                 lastUpdated: "${list[index].updatedOn}",
                 btnIcon: Icons.arrow_forward_ios_rounded,
                 btnColor: primaryC,

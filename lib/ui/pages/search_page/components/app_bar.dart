@@ -12,14 +12,14 @@ AppBar buildAppBar() {
     leading: CircleButton(
       icon: Icons.arrow_back,
       onPress: () {
-        SearchController.to.searchController.clear();
+        SearchController.to.searchTextController.clear();
         Get.back();
       },
       tooltip: "Back",
     ),
     title: SearchBar(
       hint: "Search Comic...",
-      controller: SearchController.to.searchController,
+      controller: SearchController.to.searchTextController,
       onFieldSubmitted: (e) => SearchController.to.getSearch(),
     ),
   );

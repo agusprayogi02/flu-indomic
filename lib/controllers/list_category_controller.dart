@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:indomic/data/models/thumbnail_model.dart';
+import 'package:indomic/data/services/api_exception.dart';
 import 'package:indomic/data/services/api_exception_mapper.dart';
 import 'package:indomic/data/services/repository/thumbnail_repository.dart';
 
@@ -11,6 +12,7 @@ class ListCategoryController extends GetxController
   final tabIndex = 0.obs;
   final scollIndex = 1.obs;
   final isMoreLoading = false.obs;
+  final isMax = false.obs;
   final ScrollController scollController = ScrollController();
   final data = <ThumbMangaList>[].obs;
 
@@ -22,7 +24,8 @@ class ListCategoryController extends GetxController
     onSwich(0);
     scollController.addListener(() async {
       if (scollController.position.pixels ==
-          scollController.position.maxScrollExtent) {
+              scollController.position.maxScrollExtent &&
+          isMax.isFalse) {
         this.getMore();
         change(data(), status: RxStatus.success());
         // print("max");
@@ -52,6 +55,10 @@ class ListCategoryController extends GetxController
       scollIndex(i);
       data().addAll(list);
     } catch (e) {
+      if (e is EmptyResultException) {
+        isMax(true);
+        return;
+      }
       var error = ApiExceptionMapper.toErrorMessage(e);
       change(null, status: RxStatus.error(error));
     } finally {

@@ -70,13 +70,25 @@ class ThumbnailCard extends StatelessWidget {
                     .overflow(TextOverflow.ellipsis)
                     .maxLines(1)
                     .make(),
-                "${isMangaType ? type : chapter}"
-                    .text
-                    .subtitle1(context)
-                    .overflow(TextOverflow.ellipsis)
-                    .maxLines(1)
-                    .gray700
-                    .make(),
+                if (isMangaType)
+                  "$type"
+                      .text
+                      .subtitle1(context)
+                      .overflow(TextOverflow.ellipsis)
+                      .maxLines(1)
+                      .white
+                      .make()
+                      .paddingAll(defaultPadding / 2)
+                      .backgroundColor(greyDarkC)
+                      .marginOnly(top: 2),
+                if (!isMangaType)
+                  "$chapter"
+                      .text
+                      .subtitle1(context)
+                      .overflow(TextOverflow.ellipsis)
+                      .maxLines(1)
+                      .gray700
+                      .make(),
                 Spacer(),
                 if (lastUpdated != "")
                   "$lastUpdated yang lalu"

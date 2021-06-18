@@ -12,7 +12,7 @@ AppBar buildAppBar() {
     backgroundColor: Colors.transparent,
     elevation: 0.0,
     title: SearchBar(
-      controller: SearchController.to.searchController,
+      controller: SearchController.to.searchTextController,
       hint: "Search Comic..",
       onFieldSubmitted: (e) {
         SearchController.to.getSearch();
@@ -31,7 +31,7 @@ AppBar buildAppBar() {
         marginVertical: defaultMargin * 1.2,
       ),
       CircleButton(
-        onPress: () {},
+        onPress: () => Get.toNamed(Routes.ABOUT_ME),
         isLeft: false,
         tooltip: "About Me",
         icon: Icons.info_outline_rounded,

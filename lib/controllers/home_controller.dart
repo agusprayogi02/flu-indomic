@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
+import 'package:indomic/controllers/search_controller.dart';
 import 'package:indomic/data/models/recommended_model.dart';
 import 'package:indomic/data/models/thumbnail_model.dart';
 import 'package:indomic/data/services/api_exception_mapper.dart';
 import 'package:indomic/data/services/repository/recommended_repository.dart';
 import 'package:indomic/data/services/repository/thumbnail_repository.dart';
+import 'package:indomic/routes/app_pages.dart';
 
 class HomeController extends GetxController with StateMixin<List<MangaList>> {
   static HomeController get to => Get.find();
@@ -12,6 +14,7 @@ class HomeController extends GetxController with StateMixin<List<MangaList>> {
   final isThumbError = false.obs;
   final thumbnail = <ThumbMangaList>[].obs;
   final errorMessage = "".obs;
+  final searchController = SearchController.to;
 
   HomeController({required this.thumbnailRepo, required this.recommendedRepo});
   final RecommendedRepository recommendedRepo;
@@ -26,6 +29,11 @@ class HomeController extends GetxController with StateMixin<List<MangaList>> {
       var error = ApiExceptionMapper.toErrorMessage(e);
       change(null, status: RxStatus.error(error));
     }
+  }
+
+  getMore() {
+    searchController.searchTextController.clear();
+    Get.toNamed(Routes.SEARCH);
   }
 
   getLastUpdated() async {

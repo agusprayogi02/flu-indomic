@@ -8,23 +8,29 @@ class RoundedButton extends StatelessWidget {
     required this.title,
     required this.onPress,
     required this.icon,
+    this.height,
+    this.bgColor,
   }) : super(key: key);
 
   final String title;
   final IconData icon;
   final Function() onPress;
+  final double? height;
+  final Color? bgColor;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPress,
       child: Container(
+        height: height,
         padding: EdgeInsets.symmetric(
           horizontal: defaultPadding * 1.5,
           vertical: defaultPadding,
         ),
         decoration: BoxDecoration(
           borderRadius: borderRadiusAll(),
+          color: bgColor,
         ),
         child: Row(
           children: [

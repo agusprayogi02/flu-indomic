@@ -8,6 +8,10 @@ class ChapterPage extends GetView<ChapterController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: Icon(Icons.arrow_back_ios_new_rounded),
+        ),
         title: Obx(
           () => Text('${controller.title()}'),
         ),

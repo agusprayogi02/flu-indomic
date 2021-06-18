@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:indomic/bindings/about_me_binding.dart';
 import 'package:indomic/bindings/bookmark_binding.dart';
 import 'package:indomic/bindings/chapter_binding.dart';
 import 'package:indomic/bindings/detail_binding.dart';
@@ -7,6 +8,7 @@ import 'package:indomic/bindings/list_category_binding.dart';
 import 'package:indomic/bindings/master_binding.dart';
 import 'package:indomic/bindings/search_binding.dart';
 import 'package:indomic/bindings/splash_binding.dart';
+import 'package:indomic/ui/pages/about_me_page/about_me_page.dart';
 import 'package:indomic/ui/pages/bookmark_page/bookmark_page.dart';
 import 'package:indomic/ui/pages/chapter_page/chapter_page.dart';
 import 'package:indomic/ui/pages/detail_page/detail_page.dart';
@@ -63,6 +65,11 @@ abstract class AppPages {
       name: Routes.BOOKMARK,
       page: () => BookmarkPage(),
       binding: BookmarkBinding(),
+    ),
+    GetPage(
+      name: Routes.ABOUT_ME,
+      page: () => AboutMePage(),
+      binding: AboutMeBinding(),
     ),
   ];
 }
