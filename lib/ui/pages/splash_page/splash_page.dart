@@ -20,7 +20,7 @@ class SplashPage extends GetView<SplashController> {
               child: Container(
                 padding: EdgeInsets.all(defaultPadding * 1.5),
                 decoration: BoxDecoration(
-                  color: lightPrimaryC,
+                  color: darkPrimaryC,
                   borderRadius: borderRadiusAll(),
                 ),
                 child: SvgPicture.asset("assets/icons/IndoMic.svg"),

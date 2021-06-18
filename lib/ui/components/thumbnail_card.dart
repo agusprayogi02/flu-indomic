@@ -19,6 +19,7 @@ class ThumbnailCard extends StatelessWidget {
     required this.btnIcon,
     this.btnPress,
     this.btnColor,
+    this.totalChapter = 0,
   }) : super(key: key);
 
   final Function() onPress;
@@ -31,6 +32,7 @@ class ThumbnailCard extends StatelessWidget {
   final IconData btnIcon;
   final Function()? btnPress;
   final Color? btnColor;
+  final int totalChapter;
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +86,16 @@ class ThumbnailCard extends StatelessWidget {
                       .maxLines(1)
                       .gray600
                       .make(),
+                if (totalChapter != 0)
+                  "$totalChapter Chapter"
+                      .text
+                      .subtitle2(context)
+                      .overflow(TextOverflow.ellipsis)
+                      .maxLines(1)
+                      .white
+                      .make()
+                      .paddingAll(defaultPadding / 2)
+                      .backgroundColor(greyDarkC),
               ],
             ).marginOnly(
               left: defaultMargin,

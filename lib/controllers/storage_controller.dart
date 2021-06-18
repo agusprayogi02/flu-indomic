@@ -34,10 +34,12 @@ class StorageController extends GetxController {
     var extactKey = Helper.splitSlash(key);
     if (this.cekKey(extactKey)) {
       String read = box.read(extactKey);
+      // print(extactKey);
+      // print(key);
       BookmarkModel bookmark = bookmarkModelFromJson(read);
-      bookmark.chapter = Helper.splitChapter(chapterTitle);
+      bookmark.chapter = chapterTitle;
       bookmark.index = index;
-      this.writeBookmark(key, bookmark);
+      this.writeBookmark(extactKey, bookmark);
     }
   }
 

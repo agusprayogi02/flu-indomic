@@ -7,10 +7,18 @@ class Helper {
 
 // untuk mencari chapter keberapa yang sedang dituju
   static String splitChapter(String val) {
-    var listString = val.split("Chapter");
+    var string = val.toLowerCase();
+    var listString = string.split("chapter");
     if (listString.length == 2) {
       return listString.last;
     }
+    return listString.first;
+  }
+
+// untuk mencari judul chapter yang sedang dituju
+  static String splitChapterTitle(String val) {
+    var string = val.toLowerCase();
+    var listString = string.split("chapter");
     return listString.first;
   }
 

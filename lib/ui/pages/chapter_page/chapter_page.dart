@@ -8,9 +8,10 @@ class ChapterPage extends GetView<ChapterController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Obx(
-        () => Text('${controller.title()}'),
-      )),
+        title: Obx(
+          () => Text('${controller.title()}'),
+        ),
+      ),
       body: SafeArea(
         child: Body(),
       ),

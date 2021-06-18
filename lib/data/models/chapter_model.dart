@@ -14,16 +14,19 @@ String chapterModelToJson(ChapterModel data) => json.encode(data.toJson());
 class ChapterModel extends Equatable {
   ChapterModel({
     this.chapterEndpoint = "",
+    this.chapterName = "",
     this.chapterPages = 0,
     this.chapterImage,
   });
 
   final String chapterEndpoint;
+  final String chapterName;
   final int chapterPages;
   final List<ChapterImage>? chapterImage;
 
   factory ChapterModel.fromJson(Map<String, dynamic> json) => ChapterModel(
         chapterEndpoint: json["chapter_endpoint"],
+        chapterName: json['chapter_name'],
         chapterPages: json["chapter_pages"],
         chapterImage: List<ChapterImage>.from(
             json["chapter_image"].map((x) => ChapterImage.fromJson(x))),
@@ -31,6 +34,7 @@ class ChapterModel extends Equatable {
 
   Map<String, dynamic> toJson() => {
         "chapter_endpoint": chapterEndpoint,
+        "chapter_name": chapterName,
         "chapter_pages": chapterPages,
         "chapter_image":
             List<dynamic>.from(chapterImage!.map((x) => x.toJson())),
@@ -38,7 +42,8 @@ class ChapterModel extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [chapterEndpoint, chapterPages, chapterImage];
+  List<Object?> get props =>
+      [chapterEndpoint, chapterName, chapterPages, chapterImage];
 }
 
 class ChapterImage extends Equatable {

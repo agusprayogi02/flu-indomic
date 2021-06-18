@@ -86,6 +86,7 @@ class DetailController extends GetxController with StateMixin<DetailModel> {
       setBookmark(index, chapters.last.chapterTitle);
     }
     var chapter = chapters[total - index];
+    print("Index Ke: $index");
     Get.toNamed(Routes.CHAPTER, arguments: chapter);
   }
 

@@ -63,7 +63,7 @@ class Body extends GetView<ChapterController> {
                     marginVertical: 0,
                     onPress: () => controller.getPreviousChapter(),
                   ),
-                  "Chapter ${controller.currentChapter()}"
+                  "${controller.currentChapter()}"
                       .text
                       .headline4(context)
                       .make()

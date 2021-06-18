@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:indomic/data/models/chapter_model.dart';
+import 'package:indomic/data/models/detail_model.dart';
 import 'package:indomic/data/services/api_exception_mapper.dart';
 import 'package:indomic/data/services/repository/chapter_repository.dart';
 import 'package:indomic/ui/utils/helper.dart';
@@ -23,16 +24,13 @@ class ChapterController extends GetxController with StateMixin<ChapterModel> {
 
   getChapter() {
     var args = Get.arguments;
-    var chapter = Helper.splitChapter(args.chapterTitle);
-    currentChapter(chapter);
-    title(args.chapterTitle);
     var index = detailController.chapters.indexOf(args),
         total = detailController.chapters.length;
-    this.checkCondition(total - index, total);
-    this.getApiChapter(args.chapterEndpoint);
+    checkCondition(args, total - index, total);
+    getApiChapter(args.chapterEndpoint);
     storage.updateChapter(
       detailController.endPoint(),
-      index,
+      total - index,
       detailController.chapters[index].chapterTitle,
     );
   }
@@ -42,6 +40,7 @@ class ChapterController extends GetxController with StateMixin<ChapterModel> {
       change(null, status: RxStatus.loading());
       var chapter = await repository.getAll(chapter: endPoint);
       print(chapter.chapterPages);
+      title(Helper.splitChapterTitle(chapter.chapterName));
       change(chapter, status: RxStatus.success());
     } catch (e) {
       var error = ApiExceptionMapper.toErrorMessage(e);
@@ -55,13 +54,13 @@ class ChapterController extends GetxController with StateMixin<ChapterModel> {
     if (item.index <= item.totalChapter) {
       var index = item.index + 1, total = item.totalChapter;
       if (index <= total) {
-        var current = chapters[total - index];
-        getApiChapter(current.chapterEndpoint);
-        checkCondition(index, total);
+        var item = chapters[total - index];
+        getApiChapter(item.chapterEndpoint);
+        checkCondition(item, index, total);
         storage.updateChapter(
           detailController.endPoint(),
           index,
-          current.chapterTitle,
+          item.chapterTitle,
         );
       }
     }
@@ -72,18 +71,19 @@ class ChapterController extends GetxController with StateMixin<ChapterModel> {
         item = storage.readBookmark(detailController.endPoint());
     var index = item.index - 1, total = item.totalChapter;
     if (index >= 1) {
-      var current = chapters[total - index];
-      getApiChapter(current.chapterEndpoint);
-      checkCondition(index, total);
+      var item = chapters[total - index];
+      getApiChapter(item.chapterEndpoint);
+      checkCondition(item, index, total);
       storage.updateChapter(
         detailController.endPoint(),
         index,
-        current.chapterTitle,
+        item.chapterTitle,
       );
     }
   }
 
-  checkCondition(int index, int total) {
+  checkCondition(Chapter chapter, int index, int total) {
+    currentChapter(chapter.chapterTitle);
     if (index == 1) {
       isMin(true);
     } else if (index == total) {

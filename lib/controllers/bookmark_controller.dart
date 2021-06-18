@@ -15,13 +15,21 @@ class BookmarkController extends GetxController {
     onRefresh();
   }
 
-  onRefresh() => bookmarks(storageController.readAll.toList());
+  onRefresh() {
+    bookmarks(getBookmarks.toList());
+    bookmarks.forEach((element) {
+      // untuk mengetahui perubahan pada database lokal dan mengubahnya
+      storageController.box.listenKey(
+        element,
+        (val) => bookmarks(getBookmarks.toList()),
+      );
+    });
+  }
 
   toDetails(args) => Get.toNamed(Routes.DETAIL, arguments: args);
 
   @override
   void onInit() {
-    getBookmarks;
     onRefresh();
     super.onInit();
   }
