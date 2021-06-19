@@ -54,14 +54,20 @@ class HomeController extends GetxController with StateMixin<List<MangaList>> {
         title: Text("ganti".tr),
         content: Row(
           children: [
-            Text("Inggris"),
+            Text(
+              "Inggris",
+              style: Get.textTheme.headline6,
+            ),
             Obx(
               () => Switch(
                 value: isIndo(),
                 onChanged: (bool value) => gantiBahasa(value),
               ),
             ),
-            Text("Indonesia"),
+            Text(
+              "Indonesia",
+              style: Get.textTheme.headline6,
+            )
           ],
         ),
       ),

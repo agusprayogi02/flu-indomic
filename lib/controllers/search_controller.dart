@@ -21,7 +21,7 @@ class SearchController extends GetxController
   }
 
   getSearch() async {
-    if (cekKosong()) {
+    if (!cekKosong()) {
       change(null, status: RxStatus.loading());
       try {
         var list =
@@ -36,5 +36,5 @@ class SearchController extends GetxController
   }
 
 // cek apakah input cari == kosong
-  bool cekKosong() => searchTextController.text != "" ? true : false;
+  bool cekKosong() => searchTextController.text == "" ? true : false;
 }

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:indomic/controllers/about_me_controller.dart';
-import 'package:indomic/ui/components/circle_button.dart';
-import 'package:indomic/ui/utils/config_size.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:share/share.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -39,8 +36,10 @@ class Body extends GetView<AboutMeController> {
               CustomButton(
                 icon: Icons.share_rounded,
                 title: "Share Aplikasi",
-                onTap: () =>
-                    Share.share("Aku Bos!", subject: 'Download App Indomic'),
+                onTap: () => Share.share(
+                  "https://tinyurl.com/App-IndoMic",
+                  subject: 'Download App Indomic',
+                ),
               ),
               Divider(
                 thickness: 1,
@@ -57,10 +56,7 @@ class Body extends GetView<AboutMeController> {
           ),
         ),
         Spacer(),
-        "dikembangankan oleh :${Get.deviceLocale}"
-            .text
-            .headline5(context)
-            .make(),
+        "dikembangankan oleh :".text.headline5(context).make(),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
