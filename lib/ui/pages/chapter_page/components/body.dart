@@ -58,7 +58,7 @@ class Body extends GetView<ChapterController> {
                   CircleButton(
                     disabled: controller.isMin(),
                     isLeft: false,
-                    tooltip: "Before Chapter",
+                    tooltip: "sebelum".tr,
                     icon: Icons.arrow_back_ios_rounded,
                     marginVertical: 0,
                     onPress: () => controller.getPreviousChapter(),
@@ -76,7 +76,7 @@ class Body extends GetView<ChapterController> {
                   CircleButton(
                     disabled: controller.isMax(),
                     icon: Icons.arrow_forward_ios_rounded,
-                    tooltip: "Next Chapter",
+                    tooltip: "lanjut".tr,
                     marginVertical: 0,
                     onPress: () => controller.getNextChapter(),
                   ),

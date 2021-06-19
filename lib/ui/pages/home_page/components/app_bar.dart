@@ -13,7 +13,7 @@ AppBar buildAppBar() {
     elevation: 0.0,
     title: SearchBar(
       controller: SearchController.to.searchTextController,
-      hint: "Search Comic..",
+      hint: "text_cari".tr,
       onFieldSubmitted: (e) {
         SearchController.to.getSearch();
         Get.toNamed(Routes.SEARCH);
@@ -22,7 +22,7 @@ AppBar buildAppBar() {
     actions: [
       CircleButton(
         icon: Icons.replay_sharp,
-        tooltip: "Reload",
+        tooltip: "reload".tr,
         isLeft: false,
         onPress: () {
           HomeController.to.getRecommended();
@@ -33,8 +33,15 @@ AppBar buildAppBar() {
       CircleButton(
         onPress: () => Get.toNamed(Routes.ABOUT_ME),
         isLeft: false,
-        tooltip: "About Me",
+        tooltip: "about_me".tr,
         icon: Icons.info_outline_rounded,
+        marginVertical: defaultMargin * 1.2,
+      ),
+      CircleButton(
+        onPress: () => Get.toNamed(Routes.ABOUT_ME),
+        isLeft: false,
+        tooltip: "bahasa".tr,
+        icon: Icons.language_rounded,
         marginVertical: defaultMargin * 1.2,
       ),
     ],

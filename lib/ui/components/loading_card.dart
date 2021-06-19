@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:get/get.dart';
 
 class LoadingCard extends StatelessWidget {
   const LoadingCard({
@@ -28,7 +29,7 @@ class LoadingCard extends StatelessWidget {
               image == 1 ? 'assets/gif/spinner.gif' : "assets/gif/ripple.gif",
             ),
           ),
-          if (text) "Loading ...".text.headline4(context).make(),
+          if (text) "memuat".tr.text.headline4(context).make(),
         ],
       ),
     );

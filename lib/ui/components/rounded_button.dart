@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:indomic/ui/utils/utils.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class RoundedButton extends StatelessWidget {
   const RoundedButton({
@@ -42,10 +43,7 @@ class RoundedButton extends StatelessWidget {
             SizedBox(
               width: 4,
             ),
-            Text(
-              title,
-              style: Get.textTheme.headline6,
-            ),
+            title.text.maxLines(1).ellipsis.headline6(context).make()
           ],
         ),
       ),

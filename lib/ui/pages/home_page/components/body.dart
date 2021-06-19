@@ -17,7 +17,7 @@ class Body extends GetView<HomeController> {
         children: [
           buildListRecommended(context),
           SelectionTitle(
-            title: "Latest Update",
+            title: "baru_update".tr,
             onPress: () => controller.getMore(),
           ),
           buildLatestUpdate(context),

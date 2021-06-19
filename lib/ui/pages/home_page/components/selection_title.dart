@@ -24,7 +24,7 @@ class SelectionTitle extends StatelessWidget {
         isButton
             ? TextButton(
                 onPressed: onPress,
-                child: "View All".text.color(lightPrimaryC).make(),
+                child: "view_all".tr.text.color(lightPrimaryC).make(),
               )
             : Text(""),
       ],

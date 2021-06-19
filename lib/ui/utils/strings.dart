@@ -1,7 +1,9 @@
+import 'package:get/get.dart';
+
 class Strings {
-  static String connectionError = "Connection Failed!";
-  static String clientError = "Client Internal Error!";
-  static String serverError = "Internal Server Error!";
-  static String emptyError = "Item Not Found!";
-  static String unknownError = "Unknown Error!";
+  static String connectionError = "koneksiErr".tr;
+  static String clientError = "klienErr".tr;
+  static String serverError = "serverErr".tr;
+  static String emptyError = "kosongErr".tr;
+  static String unknownError = "tidakTauErr".tr;
 }

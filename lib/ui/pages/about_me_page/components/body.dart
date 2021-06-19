@@ -57,7 +57,10 @@ class Body extends GetView<AboutMeController> {
           ),
         ),
         Spacer(),
-        "dikembangankan oleh :".text.headline5(context).make(),
+        "dikembangankan oleh :${Get.deviceLocale}"
+            .text
+            .headline5(context)
+            .make(),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

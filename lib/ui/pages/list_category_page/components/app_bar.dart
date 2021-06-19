@@ -8,7 +8,7 @@ AppBar buildAppBar() {
     elevation: 0,
     backgroundColor: lightPrimaryC.withOpacity(0.8),
     title: Text(
-      "List Comic",
+      "daftar_komic".tr,
       style: TextStyle(color: blackC, fontWeight: FontWeight.w700),
     ),
     bottom: PreferredSize(
@@ -33,7 +33,7 @@ AppBar buildAppBar() {
           ),
           tabs: [
             Tab(
-              text: "All",
+              text: "semua".tr,
             ),
             Tab(
               text: "Manhua",

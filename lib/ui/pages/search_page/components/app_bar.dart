@@ -15,10 +15,10 @@ AppBar buildAppBar() {
         SearchController.to.searchTextController.clear();
         Get.back();
       },
-      tooltip: "Back",
+      tooltip: "back".tr,
     ),
     title: SearchBar(
-      hint: "Search Comic...",
+      hint: 'text_cari'.tr,
       controller: SearchController.to.searchTextController,
       onFieldSubmitted: (e) => SearchController.to.getSearch(),
     ),

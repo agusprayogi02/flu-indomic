@@ -14,7 +14,6 @@ class Body extends GetView<BookmarkController> {
     return Container(
       margin: EdgeInsets.symmetric(
         horizontal: defaultMargin * 1.5,
-        vertical: defaultMargin,
       ),
       child: Obx(
         () {
@@ -33,7 +32,7 @@ class Body extends GetView<BookmarkController> {
                 totalChapter: item.totalChapter,
                 imgSrc: item.thumb,
                 btnIcon: Icons.delete_forever_rounded,
-                chapter: "Last Read ${item.chapter}",
+                chapter: "terakhir".tr + " ${item.chapter}",
                 btnPress: () => controller.delete(item.endpoint),
                 btnColor: Colors.red,
               );
@@ -41,6 +40,6 @@ class Body extends GetView<BookmarkController> {
           );
         },
       ),
-    );
+    ).marginOnly(top: defaultMargin);
   }
 }

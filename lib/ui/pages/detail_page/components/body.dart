@@ -114,7 +114,7 @@ class Body extends GetView<DetailController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     RoundedButton(
-                      title: "List Chapter",
+                      title: "daftar_chapter".tr,
                       icon: Icons.list_alt,
                       height: double.infinity,
                       onPress: () {
@@ -131,8 +131,8 @@ class Body extends GetView<DetailController> {
                     Obx(
                       () => RoundedButton(
                         title: controller.isSave.isFalse
-                            ? "Start Reading"
-                            : "Continue Reading",
+                            ? "mulai_baca".tr
+                            : "lanjut_baca".tr,
                         icon: Icons.menu_book_rounded,
                         height: double.infinity,
                         onPress: () => controller.startReading(),

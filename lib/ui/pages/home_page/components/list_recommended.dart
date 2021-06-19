@@ -14,7 +14,7 @@ Column buildListRecommended(BuildContext context) {
   return Column(
     children: [
       SelectionTitle(
-        title: "Recommended",
+        title: "recommend".tr,
         isButton: false,
       ).marginOnly(top: defaultMargin, bottom: defaultMargin / 4),
       Container(

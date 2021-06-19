@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:get/get.dart';
 
 class ErrorMessage extends StatelessWidget {
   const ErrorMessage({Key? key, required this.message, required this.onPress})
@@ -17,7 +18,7 @@ class ErrorMessage extends StatelessWidget {
         SizedBox(
           height: 5,
         ),
-        "Tap in Here to Reload!".text.headline5(context).gray400.makeCentered()
+        "msg_reload".tr.text.headline5(context).gray400.makeCentered()
       ],
     ).onInkTap(onPress);
   }

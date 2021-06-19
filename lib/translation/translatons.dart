@@ -1,0 +1,66 @@
+abstract class AppTranslation {
+  static Map<String, Map<String, String>> translationsKeys = {
+    "en_US": enUS,
+    "id_ID": id,
+  };
+}
+
+final Map<String, String> enUS = {
+  'baru_update': "Latest Update",
+  'recommend': "Recommended",
+  'text_cari': "Search Comic..",
+  'reload': "Reload",
+  'about_me': "About Me",
+  'bahasa': "Languages",
+  'daftar_komic': "List Comic",
+  'semua': "All",
+  "mulai_baca": "Start Reading",
+  "lanjut_baca": "Continue Reading",
+  'daftar_chapter': "List Chapter",
+  'list_tersimpan': "List Bookmark",
+  'terakhir': "Last Read",
+  'sebelum': "Before Chapter",
+  'lanjut': "Next Chapter",
+  'back': "Back",
+  'msg_reload': "Tap in Here to Reload!",
+  'memuat': "Loading...",
+  'memuat_lagi': "Loading More...",
+  'koneksiErr': "Connection Failed!",
+  'klienErr': "Client Internal Error!",
+  'serverErr': "Internal Server Error!",
+  'kosongErr': "Item Not Found!",
+  'tidakTauErr': "Unknown Error!",
+  'view_all': "View All",
+  'list': "List",
+  'bookmark': "Bookmark"
+};
+
+final Map<String, String> id = {
+  'baru_update': "Pembaruan Terbaru",
+  'recommend': "Recomendasi",
+  'text_cari': "Cari Komik..",
+  'reload': "Muat Ulang",
+  'about_me': "Tentang Saya",
+  'bahasa': "bahasa",
+  'daftar_komic': "Daftar Komik",
+  'semua': "Semua",
+  "mulai_baca": "Mulai Baca",
+  "lanjut_baca": "Lanjutkan Baca",
+  'daftar_chapter': "Daftar Chapter",
+  'list_tersimpan': "Daftar Tersimpan",
+  'terakhir': "Terakhir",
+  'sebelum': "Sebelumnya",
+  'lanjut': "Lanjut Chapter",
+  'back': "Kembali",
+  'msg_reload': "Klik Untuk Mengulang!",
+  'memuat': "Memuat...",
+  'memuat_lagi': "Memuat Lanjutan...",
+  'koneksiErr': "Koneksi Gagal!",
+  'klienErr': "Klient Internal Error!",
+  'serverErr': "Internal Server Error!",
+  'kosongErr': "Item Tidak ditemukan!",
+  'tidakTauErr': "Error Tidak diketahui!",
+  'view_all': "Semua",
+  'list': "List",
+  'bookmark': "Tersimpan"
+};

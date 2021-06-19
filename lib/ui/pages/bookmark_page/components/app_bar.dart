@@ -3,12 +3,13 @@ import 'package:indomic/controllers/bookmark_controller.dart';
 import 'package:indomic/ui/components/circle_button.dart';
 import 'package:indomic/ui/utils/utils.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:get/get.dart';
 
 AppBar buildAppBar(BuildContext context) {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0,
-    title: "List Bookmarks".text.color(primaryC).make(),
+    title: "list_tersimpan".tr.text.color(primaryC).make(),
     actions: [
       CircleButton(
         icon: Icons.replay_rounded,

@@ -37,11 +37,11 @@ class BottomNavigation extends GetView<MasterController> {
           ),
           GButton(
             icon: Icons.list_rounded,
-            text: 'List',
+            text: 'list'.tr,
           ),
           GButton(
             icon: Icons.bookmark_rounded,
-            text: 'Bookmark',
+            text: 'bookmark'.tr,
           ),
         ],
       ),
