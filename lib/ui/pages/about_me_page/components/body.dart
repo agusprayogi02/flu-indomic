@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:indomic/controllers/about_me_controller.dart';
 import 'package:indomic/ui/components/circle_button.dart';
 import 'package:indomic/ui/utils/config_size.dart';
 import 'package:indomic/ui/utils/utils.dart';
@@ -8,10 +10,11 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:get/get.dart';
 
 import 'custom_button.dart';
+import 'social_media_icon.dart';
 import 'tentang_app.dart';
 import 'top_widget.dart';
 
-class Body extends StatelessWidget {
+class Body extends GetView<AboutMeController> {
   const Body({
     Key? key,
   }) : super(key: key);
@@ -43,30 +46,9 @@ class Body extends StatelessWidget {
                 thickness: 1,
               ),
               CustomButton(
-                icon: Icons.monetization_on_rounded,
+                icon: FontAwesomeIcons.donate,
                 title: "Donasi via OVO",
-                onTap: () async {
-                  await Get.dialog(
-                    AlertDialog(
-                      titlePadding: EdgeInsets.all(defaultPadding * 1.5),
-                      title:
-                          "Scan barcode dengan aplikasi OVO anda!".text.make(),
-                      contentPadding: EdgeInsets.all(defaultPadding * 1.5),
-                      content: Image.asset(
-                        "assets/images/barcode_ovo.jpg",
-                        fit: BoxFit.fitWidth,
-                        alignment: Alignment.topCenter,
-                      ),
-                      scrollable: true,
-                      actions: <Widget>[
-                        TextButton(
-                          child: Text('Close'),
-                          onPressed: () => Get.back(),
-                        ),
-                      ],
-                    ),
-                  );
-                },
+                onTap: () => controller.showDonate(),
               ),
               Divider(
                 thickness: 1,
@@ -91,7 +73,27 @@ class Body extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 "Agus Prayogi".text.headline3(context).make(),
-                "agus.apy#6177 ~ Discord".text.size(15).make(),
+                SizedBox(
+                  height: 3,
+                ),
+                SocialMediaIcon(
+                  icon: FontAwesomeIcons.discord,
+                  title: "agus.apy#6177",
+                ),
+                SizedBox(
+                  height: 3,
+                ),
+                SocialMediaIcon(
+                  icon: FontAwesomeIcons.instagram,
+                  title: "@agus.apy",
+                ),
+                SizedBox(
+                  height: 3,
+                ),
+                SocialMediaIcon(
+                  icon: FontAwesomeIcons.github,
+                  title: "@agusprayogi02",
+                ),
               ],
             )
           ],
