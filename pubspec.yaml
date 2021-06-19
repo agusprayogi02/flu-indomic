@@ -18,6 +18,7 @@ dependencies:
   get: ^4.1.4
   get_storage: ^2.0.2
   google_nav_bar: ^5.0.5
+  share: ^2.0.4
   velocity_x: ^3.2.0
 
 dev_dependencies:

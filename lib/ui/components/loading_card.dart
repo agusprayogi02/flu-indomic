@@ -24,9 +24,9 @@ class LoadingCard extends StatelessWidget {
           SizedBox(
             height: height,
             width: width,
-            child: Image.asset(image == 1
-                ? 'assets/gif/spinner.gif'
-                : "assets/gif/ripple.gif"),
+            child: Image.asset(
+              image == 1 ? 'assets/gif/spinner.gif' : "assets/gif/ripple.gif",
+            ),
           ),
           if (text) "Loading ...".text.headline4(context).make(),
         ],
