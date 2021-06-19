@@ -38,7 +38,7 @@ AppBar buildAppBar() {
         marginVertical: defaultMargin * 1.2,
       ),
       CircleButton(
-        onPress: () => Get.toNamed(Routes.ABOUT_ME),
+        onPress: () => HomeController.to.showLanguage(),
         isLeft: false,
         tooltip: "bahasa".tr,
         icon: Icons.language_rounded,

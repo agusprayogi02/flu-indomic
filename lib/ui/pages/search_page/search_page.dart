@@ -11,9 +11,9 @@ class SearchPage extends GetView<SearchController> {
     return Scaffold(
       appBar: buildAppBar(),
       body: SafeArea(
-        child: controller.searchTextController.text == ""
-            ? ThumbnailView()
-            : Body(),
+        child: Obx(
+          () => controller.isKosong() ? ThumbnailView() : Body(),
+        ),
       ),
     );
   }

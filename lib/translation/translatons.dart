@@ -32,7 +32,8 @@ final Map<String, String> enUS = {
   'tidakTauErr': "Unknown Error!",
   'view_all': "View All",
   'list': "List",
-  'bookmark': "Bookmark"
+  'bookmark': "Bookmark",
+  'ganti': "Change Language ?",
 };
 
 final Map<String, String> id = {
@@ -62,5 +63,6 @@ final Map<String, String> id = {
   'tidakTauErr': "Error Tidak diketahui!",
   'view_all': "Semua",
   'list': "List",
-  'bookmark': "Tersimpan"
+  'bookmark': "Tersimpan",
+  'ganti': "Ganti Bahasa ?",
 };

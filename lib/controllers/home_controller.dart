@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:indomic/controllers/search_controller.dart';
+import 'package:indomic/controllers/storage_controller.dart';
 import 'package:indomic/data/models/recommended_model.dart';
 import 'package:indomic/data/models/thumbnail_model.dart';
 import 'package:indomic/data/services/api_exception_mapper.dart';
@@ -14,7 +17,9 @@ class HomeController extends GetxController with StateMixin<List<MangaList>> {
   final isThumbError = false.obs;
   final thumbnail = <ThumbMangaList>[].obs;
   final errorMessage = "".obs;
+  final isIndo = false.obs;
   final searchController = SearchController.to;
+  final storageController = StorageController.to;
 
   HomeController({required this.thumbnailRepo, required this.recommendedRepo});
   final RecommendedRepository recommendedRepo;
@@ -29,6 +34,38 @@ class HomeController extends GetxController with StateMixin<List<MangaList>> {
       var error = ApiExceptionMapper.toErrorMessage(e);
       change(null, status: RxStatus.error(error));
     }
+  }
+
+  gantiBahasa(bool val) {
+    if (val != isIndo()) {
+      if (val) {
+        Get.updateLocale(Locale('id_ID'));
+      } else {
+        Get.updateLocale(Locale('en_US'));
+      }
+      isIndo(val);
+      storageController.gantiBahasa(val);
+    }
+  }
+
+  showLanguage() {
+    Get.dialog(
+      AlertDialog(
+        title: Text("ganti".tr),
+        content: Row(
+          children: [
+            Text("Inggris"),
+            Obx(
+              () => Switch(
+                value: isIndo(),
+                onChanged: (bool value) => gantiBahasa(value),
+              ),
+            ),
+            Text("Indonesia"),
+          ],
+        ),
+      ),
+    );
   }
 
   getMore() {
@@ -53,6 +90,7 @@ class HomeController extends GetxController with StateMixin<List<MangaList>> {
 
   @override
   void onInit() {
+    isIndo(storageController.getBahasa());
     getRecommended();
     getLastUpdated();
     super.onInit();

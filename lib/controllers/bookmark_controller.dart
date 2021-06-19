@@ -19,7 +19,7 @@ class BookmarkController extends GetxController {
     bookmarks(getBookmarks.toList());
     bookmarks.forEach((element) {
       // untuk mengetahui perubahan pada database lokal dan mengubahnya
-      storageController.box.listenKey(
+      storageController.bookmarkBox.listenKey(
         element,
         (val) => bookmarks(getBookmarks.toList()),
       );

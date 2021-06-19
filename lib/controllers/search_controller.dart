@@ -9,19 +9,32 @@ class SearchController extends GetxController
   static SearchController get to => Get.find();
 
   final searchTextController = TextEditingController(text: "");
+  final isKosong = false.obs;
 
   SearchController({required this.repository});
   final ThumbnailRepository repository;
 
-  getSearch() async {
-    change(null, status: RxStatus.loading());
-    try {
-      var list =
-          await repository.getSearch(args: this.searchTextController.text);
-      change(list, status: RxStatus.success());
-    } catch (e) {
-      var error = ApiExceptionMapper.toErrorMessage(e);
-      change(null, status: RxStatus.error(error));
-    }
+  @override
+  void onInit() {
+    isKosong(cekKosong());
+    super.onInit();
   }
+
+  getSearch() async {
+    if (cekKosong()) {
+      change(null, status: RxStatus.loading());
+      try {
+        var list =
+            await repository.getSearch(args: this.searchTextController.text);
+        change(list, status: RxStatus.success());
+      } catch (e) {
+        var error = ApiExceptionMapper.toErrorMessage(e);
+        change(null, status: RxStatus.error(error));
+      }
+    }
+    isKosong(cekKosong());
+  }
+
+// cek apakah input cari == kosong
+  bool cekKosong() => searchTextController.text != "" ? true : false;
 }
