@@ -1,10 +1,9 @@
 # App Indomic
-## Dicoding Submission
 
 Aplikasi Komik Indonesi berbasis Flutter, yang bisa mengisi kegabutan para Jones 😂 dan cocok untuk semua kalangan. 
-Ayoo buruan donwload tidak adak iklannya lho.😂
+Ayoo buruan download tidak adak iklannya lho.😂
 
-Aplikasi bisa didowload [disini](https://tiny.one/app-indomic) atau [disini](https://tinyurl.com/App-IndoMic).
+Aplikasi bisa didownload [disini](https://tiny.one/app-indomic) atau [disini](https://tinyurl.com/App-IndoMic).
 
 
 Sumber API :
